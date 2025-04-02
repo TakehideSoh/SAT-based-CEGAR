@@ -1,11 +1,11 @@
 IMAGE_NAME=my-rust-container
 CONTAINER_NAME=rust-container
 
-# all: build docker-run build-cardinality build-cegar-ffi build-cegar-fix
+all: build docker-run build-cegar-fix
 
 start-container: docker-build docker-run
 
-build-all: build-cardinality build-cegar-ffi build-cegar-fix
+build-all: build-cegar-fix
 
 docker-build:
 	docker build -t $(IMAGE_NAME) .
