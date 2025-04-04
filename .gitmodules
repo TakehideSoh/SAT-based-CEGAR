@@ -1,0 +1,3 @@
+[submodule "Cardinality-CDCL"]
+	path = Cardinality-CDCL
+	url = https://github.com/jreeves3/Cardinality-CDCL.git

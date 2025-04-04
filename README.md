@@ -78,7 +78,10 @@
     ```
 
 ## Log Analysis
+
 The source code for log analysis is in the `parse` folder.
 
 ## Experiment Result Logs
-<https://cloudkobeu-my.sharepoint.com/:u:/g/personal/239x011x_cloud_kobe-u_jp/EQohsW9CpvFFjVtsGyul9TQB3Zy6lRwwDNfvEawBL8r4Sw?email=soh%40lion.kobe-u.ac.jp&e=KqsmjL>
+
+<https://drive.google.com/file/d/1km3raYbprqMGLybeuOyhiYGhLXjofTap/view?usp=drive_link>
+
