@@ -18,6 +18,7 @@ const state = {
   cycleViewMode: "merge",
   layoutMode: "graph",
   playSpeedMs: 260,
+  graphFocusMode: false,
 };
 
 const palette = [
@@ -54,6 +55,8 @@ const els = {
   layoutModeGroup: document.getElementById("layout-mode-group"),
   graphCanvas: document.getElementById("graph-canvas"),
   graphLegend: document.getElementById("graph-legend"),
+  graphFocusEnter: document.getElementById("graph-focus-enter"),
+  graphFocusExit: document.getElementById("graph-focus-exit"),
 };
 
 function escapeHtml(text) {
@@ -80,6 +83,23 @@ function formatInt(value) {
     return "-";
   }
   return Number(value).toLocaleString();
+}
+
+function formatDurationCompact0(raw, usValue) {
+  let us = usValue;
+  if ((us === null || us === undefined) && typeof parseDurationToUs === "function") {
+    us = parseDurationToUs(raw || "");
+  }
+  if (us === null || us === undefined || Number.isNaN(us)) {
+    return raw || "-";
+  }
+  if (us >= 1000 * 1000) {
+    return `${Math.round(us / (1000 * 1000)).toLocaleString()} s`;
+  }
+  if (us >= 1000) {
+    return `${Math.round(us / 1000).toLocaleString()} ms`;
+  }
+  return `${Math.round(us).toLocaleString()} us`;
 }
 
 function statusClass(status) {
@@ -193,6 +213,26 @@ function updatePlayButton() {
   } else {
     els.playToggle.classList.remove("active");
   }
+}
+
+function applyGraphFocusMode() {
+  document.body.classList.toggle("graph-focus-mode", state.graphFocusMode);
+  if (els.graphFocusEnter) {
+    els.graphFocusEnter.hidden = state.graphFocusMode;
+  }
+  if (els.graphFocusExit) {
+    els.graphFocusExit.hidden = !state.graphFocusMode;
+  }
+  renderGraphReplay();
+}
+
+function toggleGraphFocusMode(on) {
+  const next = Boolean(on);
+  if (state.graphFocusMode === next) {
+    return;
+  }
+  state.graphFocusMode = next;
+  applyGraphFocusMode();
 }
 
 function stopPlayback() {
@@ -417,32 +457,26 @@ function renderSummary(parsed) {
     0,
   );
 
+  const iterCount =
+    parsed.overall.cegarIterations === null || parsed.overall.cegarIterations === undefined
+      ? parsed.iterations.length - 1
+      : parsed.overall.cegarIterations;
+  const addedClauses =
+    parsed.overall.addedBlockClauses === null || parsed.overall.addedBlockClauses === undefined
+      ? totalAddedThis
+      : parsed.overall.addedBlockClauses;
+
   const cards = [
     { k: "Result", v: parsed.result },
+    { k: "Iterations", v: formatInt(iterCount) },
+    { k: "Clauses (enc/add)", v: `${formatInt(parsed.meta.encodingClauses)} / ${formatInt(addedClauses)}` },
+    { k: "Subcycles", v: formatInt(totalSubcycles) },
+    { k: "Merges", v: formatInt(totalMergeOps) },
+    { k: "Cut Clauses", v: formatInt(totalCutClauses) },
     {
-      k: "CEGAR Iterations",
-      v: formatInt(
-        parsed.overall.cegarIterations === null || parsed.overall.cegarIterations === undefined
-          ? parsed.iterations.length - 1
-          : parsed.overall.cegarIterations,
-      ),
+      k: "Time (solve/all)",
+      v: `${formatDurationCompact0(parsed.overall.solvingTimeRaw, parsed.overall.solvingTimeUs)} / ${formatDurationCompact0(parsed.overall.overallTimeRaw, parsed.overall.overallTimeUs)}`,
     },
-    { k: "Encoding Clauses", v: formatInt(parsed.meta.encodingClauses) },
-    {
-      k: "Added Clauses",
-      v: formatInt(
-        parsed.overall.addedBlockClauses === null || parsed.overall.addedBlockClauses === undefined
-          ? totalAddedThis
-          : parsed.overall.addedBlockClauses,
-      ),
-    },
-    { k: "Subcycles Found", v: formatInt(totalSubcycles) },
-    { k: "Merge Operations", v: formatInt(totalMergeOps) },
-    { k: "Cut Clauses (2x arcs)", v: formatInt(totalCutClauses) },
-    { k: "Solve Time", v: parsed.overall.solvingTimeRaw || "-" },
-    { k: "Overall Time", v: parsed.overall.overallTimeRaw || "-" },
-    { k: "Input Time", v: parsed.meta.fileInputTimeRaw || "-" },
-    { k: "Encoding Time", v: parsed.meta.encodingTimeRaw || "-" },
   ];
 
   els.summary.innerHTML = cards
@@ -1383,6 +1417,7 @@ function drawGraphModeFrame(ctx, width, height, graph, frame, cycleInfos) {
 
   const showAllLabels = graph.nodes.length <= 34;
   const showHighlightedLabels = graph.nodes.length <= 120;
+  const vertexLabelScale = state.graphFocusMode ? 2 : 1;
   for (let i = 0; i < graph.nodes.length; i += 1) {
     const node = graph.nodes[i];
     const pos = posById[node.id];
@@ -1405,8 +1440,8 @@ function drawGraphModeFrame(ctx, width, height, graph, frame, cycleInfos) {
 
     if (showAllLabels || (showHighlightedLabels && highlight)) {
       ctx.fillStyle = "#586e75";
-      ctx.font = "11px 'Courier New', monospace";
-      ctx.fillText(node.id, p.x + 4, p.y - 4);
+      ctx.font = `${11 * vertexLabelScale}px 'Courier New', monospace`;
+      ctx.fillText(node.id, p.x + 4 * vertexLabelScale, p.y - 4 * vertexLabelScale);
     }
   }
 }
@@ -1426,6 +1461,12 @@ function drawDecomposedModeFrame(ctx, width, height, frame, cycleInfos) {
   const cellW = areaW / cols;
   const cellH = areaH / rows;
   const mergeFocusId = frame && frame.merge ? frame.merge.merged : null;
+  const vertexLabelScale = state.graphFocusMode ? 2 : 1;
+  const sizeValues = cycleInfos.map((c) => Math.max(1, Number(c.size) || 1));
+  const minSize = sizeValues.length ? Math.min(...sizeValues) : 1;
+  const maxSize = sizeValues.length ? Math.max(...sizeValues) : 1;
+  const minSqrt = Math.sqrt(minSize);
+  const maxSqrt = Math.sqrt(maxSize);
 
   ctx.save();
   ctx.strokeStyle = "rgba(101, 123, 131, 0.14)";
@@ -1455,7 +1496,11 @@ function drawDecomposedModeFrame(ctx, width, height, frame, cycleInfos) {
     const cx = left + cellW * 0.5;
     const cy = top + cellH * 0.56;
     const m = Math.min(cellW, cellH);
-    const radius = Math.max(14, m * 0.26);
+    const rMin = Math.max(10, m * 0.12);
+    const rMax = Math.max(rMin + 2, m * 0.39);
+    const s = Math.sqrt(Math.max(1, Number(cycle.size) || 1));
+    const t = maxSqrt > minSqrt ? (s - minSqrt) / (maxSqrt - minSqrt) : 0.5;
+    const radius = rMin + t * (rMax - rMin);
     const isSelected =
       state.selectedCycle &&
       state.selectedCycle.cycleId === cycle.id &&
@@ -1511,9 +1556,9 @@ function drawDecomposedModeFrame(ctx, width, height, frame, cycleInfos) {
 
     if (vertices.length <= 14) {
       ctx.fillStyle = "#657b83";
-      ctx.font = "10px 'Courier New', monospace";
+      ctx.font = `${10 * vertexLabelScale}px 'Courier New', monospace`;
       for (let k = 0; k < pts.length; k += 1) {
-        ctx.fillText(pts[k].id, pts[k].x + 3, pts[k].y - 3);
+        ctx.fillText(pts[k].id, pts[k].x + 3 * vertexLabelScale, pts[k].y - 3 * vertexLabelScale);
       }
     }
   }
@@ -1583,12 +1628,12 @@ function drawActionOverlay(ctx, width, frame) {
 
   const hintGap = 12;
   const rightAvail = width - (x + w + hintGap) - 18;
-  const placeRight = rightAvail >= 240;
-  let hintW = placeRight ? Math.min(380, rightAvail) : Math.min(380, width - 36);
-  hintW = Math.max(190, hintW);
+  const placeRight = rightAvail >= 340;
+  let hintW = placeRight ? Math.min(640, rightAvail) : Math.min(640, width - 36);
+  hintW = Math.max(300, hintW);
   let hintX = placeRight ? x + w + hintGap : x;
   let hintY = placeRight ? y : y + h + 8;
-  const hintH = 92;
+  const hintH = 82;
   ctx.fillStyle = "rgba(253, 246, 227, 0.82)";
   ctx.strokeStyle = "rgba(101, 123, 131, 0.22)";
   ctx.lineWidth = 1;
@@ -1606,14 +1651,12 @@ function drawActionOverlay(ctx, width, frame) {
   ctx.stroke();
 
   ctx.fillStyle = "#586e75";
-  ctx.font = "bold 12px 'Avenir Next', 'Trebuchet MS', sans-serif";
+  ctx.font = "bold 16px 'Avenir Next', 'Trebuchet MS', sans-serif";
   ctx.fillText("Keyboard", hintX + 10, hintY + 18);
   ctx.fillStyle = "#657b83";
-  ctx.font = "11px 'Courier New', monospace";
-  ctx.fillText("← Prev   → Next", hintX + 10, hintY + 34);
-  ctx.fillText("↑/↓ Problems", hintX + 10, hintY + 50);
-  ctx.fillText("Home Iteration 0 start", hintX + 10, hintY + 66);
-  ctx.fillText("Space Replay/Pause", hintX + 10, hintY + 82);
+  ctx.font = "14px 'Courier New', monospace";
+  ctx.fillText("← Prev   → Next   ↑/↓ Problems", hintX + 10, hintY + 46);
+  ctx.fillText("Home reset   Space Replay/Pause   Esc toggle focus", hintX + 10, hintY + 66);
   ctx.restore();
 }
 
@@ -2053,6 +2096,18 @@ function attachListeners() {
     setCycleDetail(title, cycleId, cycle.vertices, iterIndex);
   });
 
+  if (els.graphFocusEnter) {
+    els.graphFocusEnter.addEventListener("click", () => {
+      toggleGraphFocusMode(true);
+    });
+  }
+
+  if (els.graphFocusExit) {
+    els.graphFocusExit.addEventListener("click", () => {
+      toggleGraphFocusMode(false);
+    });
+  }
+
   window.addEventListener("resize", () => {
     renderGraphReplay();
   });
@@ -2074,6 +2129,11 @@ function attachListeners() {
       event.preventDefault();
       stopPlayback();
       void selectAdjacentProblem(1);
+      return;
+    }
+    if (event.key === "Escape") {
+      event.preventDefault();
+      toggleGraphFocusMode(!state.graphFocusMode);
       return;
     }
     if (!state.replayFrames.length) {
@@ -2108,6 +2168,7 @@ function init() {
   attachListeners();
   applyControlButtonState();
   updatePlayButton();
+  applyGraphFocusMode();
   setCycleDetailPlaceholder();
   refreshReplayFrames(false);
   loadManifest();

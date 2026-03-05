@@ -76,7 +76,30 @@
           </div>
           <div id="step-label" class="step-label">-</div>
         </div>
-        <canvas id="graph-canvas" class="graph-canvas" width="900" height="620"></canvas>
+        <div class="graph-stage">
+          <span class="graph-focus-buttons graph-focus-overlay">
+            <button
+              id="graph-focus-enter"
+              class="icon-btn"
+              type="button"
+              title="Expand Graph Area"
+              aria-label="Expand Graph Area"
+            >
+              ⤢
+            </button>
+            <button
+              id="graph-focus-exit"
+              class="icon-btn"
+              type="button"
+              title="Restore Layout"
+              aria-label="Restore Layout"
+              hidden
+            >
+              ⤡
+            </button>
+          </span>
+          <canvas id="graph-canvas" class="graph-canvas" width="900" height="620"></canvas>
+        </div>
         <div id="graph-legend" class="graph-legend"></div>
       </section>
 
