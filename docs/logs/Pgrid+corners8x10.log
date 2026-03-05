@@ -1,0 +1,14 @@
+solve benchmarks/ham-examples-col/Pgrid+corners8x10.col
+file input time = 132.663us
+encoding time = 214.168us
+
+encoding clauses number = 1393
+
+CEGAR iteration...
+cegar iteration = 0
+sat solving time = 51.429405ms
+s UNSATISFIABLE
+overall cegar iterations = 0
+overall number of added block clauses = 0
+solving time = 52.203776ms
+overall time = 52.337526ms

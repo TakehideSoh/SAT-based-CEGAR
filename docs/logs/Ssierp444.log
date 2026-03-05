@@ -1,0 +1,120 @@
+solve benchmarks/ham-examples-col/Ssierp444.col
+file input time = 88.366us
+encoding time = 104.444us
+
+encoding clauses number = 1044
+
+CEGAR iteration...
+cegar iteration = 0
+sat solving time = 25.518us
+number of subcycles found = 7
+cycle lengths before merge (length:number) = {3: 4, 4: 1, 6: 1, 12: 1}
+merge operation: 3 + 6 = 9
+merge operation: 12 + 3 = 15
+merge operation: 3 + 3 = 6
+merge operation: 15 + 4 = 19
+merge operation: 6 + 19 = 25
+number of merge operations = 5
+number of resulting cycles = 2
+cycle lengths after merge (length:number) = {9: 1, 25: 1}
+gb-trace iteration=0 subcycle id=C1 vertices=[000,001,002]
+gb-trace iteration=0 subcycle id=C2 vertices=[003,013,011,012,022,023]
+gb-trace iteration=0 subcycle id=C3 vertices=[033,301,302]
+gb-trace iteration=0 subcycle id=C4 vertices=[101,102,103]
+gb-trace iteration=0 subcycle id=C5 vertices=[111,112,113]
+gb-trace iteration=0 subcycle id=C6 vertices=[122,123,133,312,233,223,222,212,213,203,202,201]
+gb-trace iteration=0 subcycle id=C7 vertices=[303,313,333,323]
+gb-trace iteration=0 merge C1 + C2 = C8
+gb-trace iteration=0 merge C6 + C3 = C9
+gb-trace iteration=0 merge C5 + C4 = C10
+gb-trace iteration=0 merge C9 + C7 = C11
+gb-trace iteration=0 merge C10 + C11 = C12
+gb-trace iteration=0 resulting id=C8 vertices=[000,003,023,022,012,011,013,001,002]
+gb-trace iteration=0 resulting id=C12 vertices=[111,101,103,123,133,313,333,323,303,301,033,302,312,233,223,222,212,213,203,202,201,122,102,112,113]
+cut arcs by clause length (length:number) = {9: 4}
+number of added block clauses (this increment) = 4
+number of added block clauses (accumulated) = 4
+add block clauses time = 63.935us
+increment time = 89.453us
+
+CEGAR iteration...
+cegar iteration = 1
+sat solving time = 29.068us
+number of subcycles found = 5
+cycle lengths before merge (length:number) = {3: 2, 4: 1, 6: 1, 18: 1}
+merge operation: 3 + 18 = 21
+merge operation: 3 + 4 = 7
+merge operation: 21 + 6 = 27
+number of merge operations = 3
+number of resulting cycles = 2
+cycle lengths after merge (length:number) = {7: 1, 27: 1}
+gb-trace iteration=1 subcycle id=C1 vertices=[000,001,002]
+gb-trace iteration=1 subcycle id=C2 vertices=[003,013,011,012,022,203,201,122,213,212,222,202,223,233,323,302,033,023]
+gb-trace iteration=1 subcycle id=C3 vertices=[101,113,111,112]
+gb-trace iteration=1 subcycle id=C4 vertices=[102,123,103]
+gb-trace iteration=1 subcycle id=C5 vertices=[133,312,301,303,333,313]
+gb-trace iteration=1 merge C1 + C2 = C6
+gb-trace iteration=1 merge C4 + C3 = C7
+gb-trace iteration=1 merge C6 + C5 = C8
+gb-trace iteration=1 resulting id=C7 vertices=[102,101,112,111,113,123,103]
+gb-trace iteration=1 resulting id=C8 vertices=[000,003,023,033,301,312,133,313,333,303,302,323,233,223,202,222,212,213,122,201,203,022,012,011,013,001,002]
+cut arcs by clause length (length:number) = {9: 4}
+number of added block clauses (this increment) = 4
+number of added block clauses (accumulated) = 8
+add block clauses time = 39.757us
+increment time = 68.825us
+
+CEGAR iteration...
+cegar iteration = 2
+sat solving time = 11.720us
+number of subcycles found = 4
+cycle lengths before merge (length:number) = {3: 1, 6: 1, 8: 1, 17: 1}
+merge operation: 3 + 17 = 20
+merge operation: 6 + 20 = 26
+number of merge operations = 2
+number of resulting cycles = 2
+cycle lengths after merge (length:number) = {8: 1, 26: 1}
+gb-trace iteration=2 subcycle id=C1 vertices=[000,001,002]
+gb-trace iteration=2 subcycle id=C2 vertices=[003,013,011,012,022,203,201,213,212,222,202,223,233,323,302,033,023]
+gb-trace iteration=2 subcycle id=C3 vertices=[101,113,111,112,122,123,103,102]
+gb-trace iteration=2 subcycle id=C4 vertices=[133,312,301,303,333,313]
+gb-trace iteration=2 merge C1 + C2 = C5
+gb-trace iteration=2 merge C4 + C5 = C6
+gb-trace iteration=2 resulting id=C3 vertices=[101,113,111,112,122,123,103,102]
+gb-trace iteration=2 resulting id=C6 vertices=[133,312,302,323,233,223,202,222,212,213,201,203,022,012,011,013,001,002,000,003,023,033,301,303,333,313]
+cut arcs by clause length (length:number) = {9: 4}
+number of added block clauses (this increment) = 4
+number of added block clauses (accumulated) = 12
+add block clauses time = 35.183us
+increment time = 46.903us
+
+CEGAR iteration...
+cegar iteration = 3
+sat solving time = 36.648us
+number of subcycles found = 3
+cycle lengths before merge (length:number) = {3: 2, 28: 1}
+merge operation: 3 + 28 = 31
+merge operation: 3 + 31 = 34
+number of merge operations = 2
+number of resulting cycles = 1
+cycle lengths after merge (length:number) = {34: 1}
+gb-trace iteration=3 subcycle id=C1 vertices=[000,001,002]
+gb-trace iteration=3 subcycle id=C2 vertices=[003,013,011,012,022,203,213,212,201,122,112,102,101,111,113,123,103,133,312,233,323,302,303,333,313,301,033,023]
+gb-trace iteration=3 subcycle id=C3 vertices=[202,223,222]
+gb-trace iteration=3 merge C1 + C2 = C4
+gb-trace iteration=3 merge C3 + C4 = C5
+gb-trace iteration=3 resulting id=C5 vertices=[202,201,122,112,102,101,111,113,123,103,133,312,233,323,302,303,333,313,301,033,023,003,000,002,001,013,011,012,022,203,213,212,223,222]
+number of added block clauses (this increment) = 0
+number of added block clauses (accumulated) = 12
+add block clauses time = 30.023us
+increment time = 66.671us
+
+hamiltonian cycle found by 2-opt
+solution: 
+202 201 122 112 102 101 111 113 123 103 133 312 233 323 302 303 333 313 301 033 023 003 000 002 001 013 011 012 022 203 213 212 223 222
+
+s SATISFIABLE
+overall cegar iterations = 3
+overall number of added block clauses = 12
+solving time = 623.547us
+overall time = 712.463us

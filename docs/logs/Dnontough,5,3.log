@@ -1,0 +1,98 @@
+solve benchmarks/ham-examples-col/Dnontough,5,3.col
+file input time = 172.246us
+encoding time = 228.942us
+
+encoding clauses number = 1396
+
+CEGAR iteration...
+cegar iteration = 0
+sat solving time = 58.827us
+number of subcycles found = 7
+cycle lengths before merge (length:number) = {3: 5, 4: 2}
+merge operation: 4 + 4 = 8
+merge operation: 3 + 8 = 11
+merge operation: 3 + 11 = 14
+number of merge operations = 3
+number of resulting cycles = 4
+cycle lengths after merge (length:number) = {3: 3, 14: 1}
+gb-trace iteration=0 subcycle id=C1 vertices=[1,5.3,2,5.2]
+gb-trace iteration=0 subcycle id=C2 vertices=[3,5.1,4,4.3]
+gb-trace iteration=0 subcycle id=C3 vertices=[5,4.2,4.1]
+gb-trace iteration=0 subcycle id=C4 vertices=[0.1,0.3,0.2]
+gb-trace iteration=0 subcycle id=C5 vertices=[1.1,1.3,1.2]
+gb-trace iteration=0 subcycle id=C6 vertices=[2.1,2.3,2.2]
+gb-trace iteration=0 subcycle id=C7 vertices=[3.1,3.3,3.2]
+gb-trace iteration=0 merge C1 + C2 = C8
+gb-trace iteration=0 merge C6 + C8 = C9
+gb-trace iteration=0 merge C3 + C9 = C10
+gb-trace iteration=0 resulting id=C5 vertices=[1.1,1.3,1.2]
+gb-trace iteration=0 resulting id=C7 vertices=[3.1,3.3,3.2]
+gb-trace iteration=0 resulting id=C4 vertices=[0.1,0.3,0.2]
+gb-trace iteration=0 resulting id=C10 vertices=[5,2.1,2.2,2.3,3,4.3,4,5.1,5.3,2,5.2,1,4.2,4.1]
+cut arcs by clause length (length:number) = {15: 6, 45: 2}
+number of added block clauses (this increment) = 8
+number of added block clauses (accumulated) = 8
+add block clauses time = 126.368us
+increment time = 185.195us
+
+CEGAR iteration...
+cegar iteration = 1
+sat solving time = 147.865us
+number of subcycles found = 5
+cycle lengths before merge (length:number) = {3: 2, 4: 1, 5: 1, 8: 1}
+merge operation: 5 + 8 = 13
+merge operation: 4 + 13 = 17
+number of merge operations = 2
+number of resulting cycles = 3
+cycle lengths after merge (length:number) = {3: 2, 17: 1}
+gb-trace iteration=1 subcycle id=C1 vertices=[1,5.3,5.1,2,5.2]
+gb-trace iteration=1 subcycle id=C2 vertices=[3,1.1,1.3,1.2,4,3.1,3.3,3.2]
+gb-trace iteration=1 subcycle id=C3 vertices=[5,0.2,0.1,0.3]
+gb-trace iteration=1 subcycle id=C4 vertices=[2.1,2.3,2.2]
+gb-trace iteration=1 subcycle id=C5 vertices=[4.1,4.3,4.2]
+gb-trace iteration=1 merge C1 + C2 = C6
+gb-trace iteration=1 merge C3 + C6 = C7
+gb-trace iteration=1 resulting id=C4 vertices=[2.1,2.3,2.2]
+gb-trace iteration=1 resulting id=C5 vertices=[4.1,4.3,4.2]
+gb-trace iteration=1 resulting id=C7 vertices=[5,1.1,1.3,1.2,4,3.1,3.3,3.2,3,5.3,5.1,2,5.2,1,0.2,0.1,0.3]
+cut arcs by clause length (length:number) = {15: 4, 30: 2}
+number of added block clauses (this increment) = 6
+number of added block clauses (accumulated) = 14
+add block clauses time = 73.933us
+increment time = 221.798us
+
+CEGAR iteration...
+cegar iteration = 2
+sat solving time = 736.934us
+number of subcycles found = 5
+cycle lengths before merge (length:number) = {3: 1, 4: 3, 8: 1}
+merge operation: 4 + 4 = 8
+merge operation: 4 + 8 = 12
+merge operation: 8 + 12 = 20
+number of merge operations = 3
+number of resulting cycles = 2
+cycle lengths after merge (length:number) = {3: 1, 20: 1}
+gb-trace iteration=2 subcycle id=C1 vertices=[1,4.3,4.1,4.2]
+gb-trace iteration=2 subcycle id=C2 vertices=[2,0.1,0.3,0.2]
+gb-trace iteration=2 subcycle id=C3 vertices=[3,1.3,1.2,1.1,4,3.1,3.3,3.2]
+gb-trace iteration=2 subcycle id=C4 vertices=[5,2.3,2.2,2.1]
+gb-trace iteration=2 subcycle id=C5 vertices=[5.1,5.3,5.2]
+gb-trace iteration=2 merge C1 + C2 = C6
+gb-trace iteration=2 merge C4 + C3 = C7
+gb-trace iteration=2 merge C6 + C7 = C8
+gb-trace iteration=2 resulting id=C5 vertices=[5.1,5.3,5.2]
+gb-trace iteration=2 resulting id=C8 vertices=[1,1.3,1.2,1.1,4,3.1,3.3,3.2,3,2.3,2.2,2.1,5,0.1,0.3,0.2,2,4.3,4.1,4.2]
+cut arcs by clause length (length:number) = {15: 4}
+number of added block clauses (this increment) = 4
+number of added block clauses (accumulated) = 18
+add block clauses time = 76.769us
+increment time = 813.703us
+
+CEGAR iteration...
+cegar iteration = 3
+sat solving time = 708.951us
+s UNSATISFIABLE
+overall cegar iterations = 3
+overall number of added block clauses = 18
+solving time = 2.800907ms
+overall time = 2.974564ms

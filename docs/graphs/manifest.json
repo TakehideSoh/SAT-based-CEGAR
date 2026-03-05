@@ -1,0 +1,25 @@
+{
+  "files": [
+    "Aanna-le32ge3.json",
+    "Bbinary55.json",
+    "Cconcentric-36.json",
+    "DK13+K13,touching.json",
+    "Dnontough,5,3.json",
+    "Eraman,3,47,1,1.json",
+    "Ffleischner-half.json",
+    "Ffleischner.json",
+    "FfleischnerG3.json",
+    "Ggiraffe10x10.json",
+    "Ggiraffe10x10aaaa.json",
+    "Hhalin-pi128.json",
+    "Hhalin-pi198.json",
+    "Pgrid+corners8x10.json",
+    "Q5cube.json",
+    "Rrandom+cycle,64,64,0,0,0,0,0,1,1,3142.json",
+    "Ssierp444.json",
+    "TtripartiteK456.json",
+    "Ucontig-ME-to-all.json",
+    "Vbauer-broersma-veldman.json",
+    "Wgrinberg,1,2.json"
+  ]
+}

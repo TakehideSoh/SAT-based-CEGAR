@@ -1,0 +1,38 @@
+solve benchmarks/ham-examples-col/Cconcentric-36.col
+file input time = 141.674us
+encoding time = 242.408us
+
+encoding clauses number = 1944
+
+CEGAR iteration...
+cegar iteration = 0
+sat solving time = 42.319us
+number of subcycles found = 3
+cycle lengths before merge (length:number) = {36: 2, 72: 1}
+number of merge operations = 0
+number of resulting cycles = 3
+cycle lengths after merge (length:number) = {36: 2, 72: 1}
+gb-trace iteration=0 subcycle id=C1 vertices=[a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31,a32,a33,a34,a35]
+gb-trace iteration=0 subcycle id=C2 vertices=[b0,c0,b1,c1,b2,c2,b3,c3,b4,c4,b5,c5,b6,c6,b7,c7,b8,c8,b9,c9,b10,c10,b11,c11,b12,c12,b13,c13,b14,c14,b15,c15,b16,c16,b17,c17,b18,c18,b19,c19,b20,c20,b21,c21,b22,c22,b23,c23,b24,c24,b25,c25,b26,c26,b27,c27,b28,c28,b29,c29,b30,c30,b31,c31,b32,c32,b33,c33,b34,c34,b35,c35]
+gb-trace iteration=0 subcycle id=C3 vertices=[d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20,d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31,d32,d33,d34,d35]
+gb-trace iteration=0 resulting id=C1 vertices=[a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31,a32,a33,a34,a35]
+gb-trace iteration=0 resulting id=C2 vertices=[b0,c0,b1,c1,b2,c2,b3,c3,b4,c4,b5,c5,b6,c6,b7,c7,b8,c8,b9,c9,b10,c10,b11,c11,b12,c12,b13,c13,b14,c14,b15,c15,b16,c16,b17,c17,b18,c18,b19,c19,b20,c20,b21,c21,b22,c22,b23,c23,b24,c24,b25,c25,b26,c26,b27,c27,b28,c28,b29,c29,b30,c30,b31,c31,b32,c32,b33,c33,b34,c34,b35,c35]
+gb-trace iteration=0 resulting id=C3 vertices=[d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20,d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31,d32,d33,d34,d35]
+cut arcs by clause length (length:number) = {36: 4, 72: 2}
+number of added block clauses (this increment) = 6
+number of added block clauses (accumulated) = 6
+add block clauses time = 175.420us
+increment time = 217.739us
+
+CEGAR iteration...
+cegar iteration = 1
+sat solving time = 27.996us
+
+solution: 
+a0 a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11 a12 a13 a14 a15 a16 a17 a18 a19 a20 a21 a22 a23 a24 a25 a26 a27 a28 a29 a30 a31 a32 a33 a34 b34 c33 b33 c32 b32 c31 b31 c30 b30 c29 b29 c28 b28 c27 b27 c26 b26 c25 b25 c24 b24 c23 b23 c22 b22 c21 b21 c20 b20 c19 b19 c18 b18 c17 b17 c16 b16 c15 b15 c14 b14 c13 b13 c12 b12 c11 b11 c10 b10 c9 b9 c8 b8 c7 b7 c6 b6 c5 b5 c4 b4 c3 b3 c2 b2 c1 b1 c0 b0 c35 d35 d0 d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15 d16 d17 d18 d19 d20 d21 d22 d23 d24 d25 d26 d27 d28 d29 d30 d31 d32 d33 d34 c34 b35 a35
+
+s SATISFIABLE
+overall cegar iterations = 1
+overall number of added block clauses = 6
+solving time = 1.199775ms
+overall time = 1.342516ms

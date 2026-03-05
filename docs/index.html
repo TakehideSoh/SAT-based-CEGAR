@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CEGAR GB Trace Visualizer</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>CEGAR GB Trace Visualizer</h1>
+        <p>ham-examples Rust logs with subcycle IDs and merge traces</p>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="panel panel-list">
+        <div class="panel-title">Problems</div>
+        <input id="search-input" class="search" type="search" placeholder="Search log file..." />
+        <div id="problem-list" class="problem-list"></div>
+      </aside>
+
+      <section class="panel panel-graph">
+        <div class="panel-title" id="main-title">Select a log</div>
+        <div id="summary" class="summary"></div>
+        <div class="graph-controls">
+          <div class="ctrl-block">
+            <div class="ctrl-title">Replay</div>
+            <div class="ctrl-group replay-buttons">
+              <button id="step-prev" type="button" title="Prev" aria-label="Prev">⏮</button>
+              <button id="play-toggle" type="button" title="Play/Pause" aria-label="Play">▶</button>
+              <button id="step-next" type="button" title="Next" aria-label="Next">⏭</button>
+            </div>
+          </div>
+
+          <div class="ctrl-block">
+            <div class="ctrl-title">Speed</div>
+            <div class="ctrl-group" id="play-speed-group">
+              <button type="button" data-play-speed="150">x4</button>
+              <button type="button" data-play-speed="260" class="active">x2</button>
+              <button type="button" data-play-speed="420">x1</button>
+              <button type="button" data-play-speed="700">x0.6</button>
+            </div>
+          </div>
+
+          <div class="ctrl-block">
+            <div class="ctrl-title">Layout</div>
+            <div class="ctrl-group" id="layout-mode-group">
+              <button type="button" data-layout-mode="graph" class="active">Graph</button>
+              <button type="button" data-layout-mode="decomposed">Decomposed</button>
+            </div>
+          </div>
+
+          <div class="ctrl-block">
+            <div class="ctrl-title">Cycle View</div>
+            <div class="ctrl-group" id="cycle-view-group">
+              <button type="button" data-cycle-view="subcycles">Subcycles only</button>
+              <button type="button" data-cycle-view="merge" class="active">with Merge</button>
+            </div>
+          </div>
+
+          <div class="ctrl-block ctrl-block-slider">
+            <div class="ctrl-title">Step</div>
+            <input id="step-slider" type="range" min="0" max="0" value="0" />
+          </div>
+          <div id="step-label" class="step-label">-</div>
+        </div>
+        <canvas id="graph-canvas" class="graph-canvas" width="900" height="620"></canvas>
+        <div id="graph-legend" class="graph-legend"></div>
+      </section>
+
+      <aside class="panel panel-log">
+        <div class="panel-title">Logs</div>
+        <div id="logs-current-action" class="logs-current-action">Frame: -</div>
+        <div id="iterations" class="iterations"></div>
+        <div class="panel-title panel-subtitle">Cycle Detail</div>
+        <div id="cycle-detail" class="cycle-detail"></div>
+      </aside>
+    </main>
+
+    <script src="./js/parser.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
+</html>

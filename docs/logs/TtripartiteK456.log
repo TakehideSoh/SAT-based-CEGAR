@@ -1,0 +1,36 @@
+solve benchmarks/ham-examples-col/TtripartiteK456.col
+file input time = 110.380us
+encoding time = 143.013us
+
+encoding clauses number = 872
+
+CEGAR iteration...
+cegar iteration = 0
+sat solving time = 367.007us
+number of subcycles found = 3
+cycle lengths before merge (length:number) = {4: 1, 5: 1, 6: 1}
+merge operation: 4 + 5 = 9
+merge operation: 6 + 9 = 15
+number of merge operations = 2
+number of resulting cycles = 1
+cycle lengths after merge (length:number) = {15: 1}
+gb-trace iteration=0 subcycle id=C1 vertices=[x1,z6,x2,z5]
+gb-trace iteration=0 subcycle id=C2 vertices=[x3,z4,y1,z1,y4]
+gb-trace iteration=0 subcycle id=C3 vertices=[x4,y3,z3,y2,z2,y5]
+gb-trace iteration=0 merge C1 + C2 = C4
+gb-trace iteration=0 merge C3 + C4 = C5
+gb-trace iteration=0 resulting id=C5 vertices=[x4,z4,x1,z5,x2,z6,y1,z1,y4,x3,y3,z3,y2,z2,y5]
+number of added block clauses (this increment) = 0
+number of added block clauses (accumulated) = 0
+add block clauses time = 52.564us
+increment time = 419.571us
+
+hamiltonian cycle found by 2-opt
+solution: 
+x4 z4 x1 z5 x2 z6 y1 z1 y4 x3 y3 z3 y2 z2 y5
+
+s SATISFIABLE
+overall cegar iterations = 0
+overall number of added block clauses = 0
+solving time = 919.804us
+overall time = 1.031346ms

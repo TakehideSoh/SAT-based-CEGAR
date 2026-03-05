@@ -1,0 +1,653 @@
+solve benchmarks/ham-examples-col/Hhalin-pi198.col
+file input time = 172.176us
+encoding time = 407.793us
+
+encoding clauses number = 2673
+
+CEGAR iteration...
+cegar iteration = 0
+sat solving time = 191.215us
+number of subcycles found = 13
+cycle lengths before merge (length:number) = {3: 2, 4: 2, 5: 1, 7: 1, 9: 1, 10: 1, 12: 1, 14: 1, 19: 1, 24: 1, 84: 1}
+merge operation: 84 + 7 = 91
+merge operation: 4 + 5 = 9
+merge operation: 12 + 3 = 15
+merge operation: 3 + 24 = 27
+number of merge operations = 4
+number of resulting cycles = 9
+cycle lengths after merge (length:number) = {4: 1, 9: 2, 10: 1, 14: 1, 15: 1, 19: 1, 27: 1, 91: 1}
+gb-trace iteration=0 subcycle id=C1 vertices=[1,198,7,6,5,183,184,185,186,4,3,2,196,197]
+gb-trace iteration=0 subcycle id=C2 vertices=[8,182,181,9]
+gb-trace iteration=0 subcycle id=C3 vertices=[10,12,26,174,176,180,179,177,178,175,173,171,172,170,162,132,133,137,159,161,160,158,144,145,157,156,154,155,153,152,146,147,149,151,150,148,143,142,141,140,138,139,136,134,135,131,130,129,127,128,126,56,57,59,60,58,55,54,53,37,31,32,34,36,35,33,30,29,27,28,25,21,22,24,23,20,19,17,18,16,15,13,14,11]
+gb-trace iteration=0 subcycle id=C4 vertices=[38,39,41,43,46,45,47,51,52,44,42,40]
+gb-trace iteration=0 subcycle id=C5 vertices=[48,50,49]
+gb-trace iteration=0 subcycle id=C6 vertices=[61,111,113,115,125,124,122,123,121,120,119,118,116,117,114,112,110,108,109,107,103,102,92,62]
+gb-trace iteration=0 subcycle id=C7 vertices=[63,64,66,69,68,70,72,71,67,65]
+gb-trace iteration=0 subcycle id=C8 vertices=[73,91,90,88,89,87,86,80,81,85,84,82,83,79,78,76,77,75,74]
+gb-trace iteration=0 subcycle id=C9 vertices=[93,101,100,96,97,99,98,95,94]
+gb-trace iteration=0 subcycle id=C10 vertices=[104,106,105]
+gb-trace iteration=0 subcycle id=C11 vertices=[163,169,168,166,167,165,164]
+gb-trace iteration=0 subcycle id=C12 vertices=[187,195,194,188]
+gb-trace iteration=0 subcycle id=C13 vertices=[189,193,192,191,190]
+gb-trace iteration=0 merge C3 + C11 = C14
+gb-trace iteration=0 merge C12 + C13 = C15
+gb-trace iteration=0 merge C4 + C5 = C16
+gb-trace iteration=0 merge C10 + C6 = C17
+gb-trace iteration=0 resulting id=C1 vertices=[1,198,7,6,5,183,184,185,186,4,3,2,196,197]
+gb-trace iteration=0 resulting id=C2 vertices=[8,182,181,9]
+gb-trace iteration=0 resulting id=C14 vertices=[10,12,26,174,176,180,179,177,178,175,173,171,172,170,169,168,166,167,165,164,163,162,132,133,137,159,161,160,158,144,145,157,156,154,155,153,152,146,147,149,151,150,148,143,142,141,140,138,139,136,134,135,131,130,129,127,128,126,56,57,59,60,58,55,54,53,37,31,32,34,36,35,33,30,29,27,28,25,21,22,24,23,20,19,17,18,16,15,13,14,11]
+gb-trace iteration=0 resulting id=C9 vertices=[93,101,100,96,97,99,98,95,94]
+gb-trace iteration=0 resulting id=C15 vertices=[187,195,194,193,192,191,190,189,188]
+gb-trace iteration=0 resulting id=C16 vertices=[38,39,41,43,46,45,47,48,49,50,51,52,44,42,40]
+gb-trace iteration=0 resulting id=C7 vertices=[63,64,66,69,68,70,72,71,67,65]
+gb-trace iteration=0 resulting id=C8 vertices=[73,91,90,88,89,87,86,80,81,85,84,82,83,79,78,76,77,75,74]
+gb-trace iteration=0 resulting id=C17 vertices=[104,103,102,92,62,61,111,113,115,125,124,122,123,121,120,119,118,116,117,114,112,110,108,109,107,106,105]
+cut arcs by clause length (length:number) = {3: 8, 4: 4, 5: 2, 6: 2, 9: 2}
+number of added block clauses (this increment) = 18
+number of added block clauses (accumulated) = 18
+add block clauses time = 284.348us
+increment time = 475.563us
+
+CEGAR iteration...
+cegar iteration = 1
+sat solving time = 70.072us
+number of subcycles found = 11
+cycle lengths before merge (length:number) = {3: 4, 4: 1, 7: 2, 10: 1, 20: 1, 59: 1, 79: 1}
+merge operation: 79 + 4 = 83
+merge operation: 7 + 83 = 90
+merge operation: 3 + 59 = 62
+merge operation: 3 + 62 = 65
+merge operation: 90 + 7 = 97
+merge operation: 3 + 10 = 13
+merge operation: 97 + 13 = 110
+number of merge operations = 7
+number of resulting cycles = 4
+cycle lengths after merge (length:number) = {3: 1, 20: 1, 65: 1, 110: 1}
+gb-trace iteration=1 subcycle id=C1 vertices=[1,198,7,6,5,4,186,191,190,192,193,189,188,194,195,187,3,2,196,197]
+gb-trace iteration=1 subcycle id=C2 vertices=[8,182,181,180,179,178,177,176,174,175,173,171,172,170,162,132,133,137,159,161,160,158,144,145,157,156,154,155,153,152,146,147,149,151,150,148,143,142,141,140,138,139,136,134,135,131,130,129,127,128,126,56,57,59,60,58,55,54,53,37,38,39,36,34,35,33,32,31,29,30,28,27,26,12,13,14,11,10,9]
+gb-trace iteration=1 subcycle id=C3 vertices=[15,17,18,16]
+gb-trace iteration=1 subcycle id=C4 vertices=[19,20,23,22,24,25,21]
+gb-trace iteration=1 subcycle id=C5 vertices=[40,41,43,46,45,47,51,52,44,42]
+gb-trace iteration=1 subcycle id=C6 vertices=[48,50,49]
+gb-trace iteration=1 subcycle id=C7 vertices=[61,111,113,115,125,124,122,123,121,120,119,118,116,117,114,112,110,108,109,107,103,102,92,93,101,100,96,94,95,91,90,88,89,87,86,80,81,85,84,82,83,79,78,76,77,75,74,73,71,72,70,69,68,67,65,66,64,63,62]
+gb-trace iteration=1 subcycle id=C8 vertices=[97,99,98]
+gb-trace iteration=1 subcycle id=C9 vertices=[104,106,105]
+gb-trace iteration=1 subcycle id=C10 vertices=[163,169,168,166,167,165,164]
+gb-trace iteration=1 subcycle id=C11 vertices=[183,184,185]
+gb-trace iteration=1 merge C2 + C3 = C12
+gb-trace iteration=1 merge C10 + C12 = C13
+gb-trace iteration=1 merge C9 + C7 = C14
+gb-trace iteration=1 merge C8 + C14 = C15
+gb-trace iteration=1 merge C13 + C4 = C16
+gb-trace iteration=1 merge C6 + C5 = C17
+gb-trace iteration=1 merge C16 + C17 = C18
+gb-trace iteration=1 resulting id=C1 vertices=[1,198,7,6,5,4,186,191,190,192,193,189,188,194,195,187,3,2,196,197]
+gb-trace iteration=1 resulting id=C15 vertices=[97,96,94,95,91,90,88,89,87,86,80,81,85,84,82,83,79,78,76,77,75,74,73,71,72,70,69,68,67,65,66,64,63,62,61,111,113,115,125,124,122,123,121,120,119,118,116,117,114,112,110,108,109,107,106,105,104,103,102,92,93,101,100,99,98]
+gb-trace iteration=1 resulting id=C11 vertices=[183,184,185]
+gb-trace iteration=1 resulting id=C18 vertices=[163,162,132,133,137,159,161,160,158,144,145,157,156,154,155,153,152,146,147,149,151,150,148,143,142,141,140,138,139,136,134,135,131,130,129,127,128,126,56,57,59,60,58,55,54,53,37,38,40,42,44,52,51,50,49,48,47,45,46,43,41,39,36,34,35,33,32,31,29,30,28,27,26,12,13,15,17,19,21,25,24,22,23,20,18,16,14,11,10,9,8,182,181,180,179,178,177,176,174,175,173,171,172,170,169,168,166,167,165,164]
+cut arcs by clause length (length:number) = {3: 4, 4: 2, 6: 2}
+number of added block clauses (this increment) = 8
+number of added block clauses (accumulated) = 26
+add block clauses time = 232.157us
+increment time = 302.229us
+
+CEGAR iteration...
+cegar iteration = 2
+sat solving time = 44.384us
+number of subcycles found = 15
+cycle lengths before merge (length:number) = {3: 3, 4: 1, 6: 2, 7: 3, 9: 1, 10: 1, 15: 1, 18: 1, 25: 1, 75: 1}
+merge operation: 25 + 75 = 100
+merge operation: 7 + 100 = 107
+merge operation: 4 + 7 = 11
+merge operation: 107 + 10 = 117
+merge operation: 11 + 117 = 128
+merge operation: 3 + 18 = 21
+merge operation: 128 + 3 = 131
+merge operation: 6 + 6 = 12
+merge operation: 131 + 12 = 143
+number of merge operations = 9
+number of resulting cycles = 6
+cycle lengths after merge (length:number) = {3: 1, 7: 1, 9: 1, 15: 1, 21: 1, 143: 1}
+gb-trace iteration=2 subcycle id=C1 vertices=[1,198,7,6,8,182,184,185,183,5,4,186,191,190,192,193,189,188,194,195,187,3,2,196,197]
+gb-trace iteration=2 subcycle id=C2 vertices=[9,181,180,179,178,177,176,174,175,173,171,172,170,162,132,133,137,159,161,160,158,144,145,157,156,154,155,153,152,146,147,149,151,150,148,143,142,141,140,138,139,136,134,135,131,130,129,127,128,126,56,57,58,55,54,53,37,38,39,36,34,35,33,32,31,29,30,28,27,26,12,13,14,11,10]
+gb-trace iteration=2 subcycle id=C3 vertices=[15,17,18,16]
+gb-trace iteration=2 subcycle id=C4 vertices=[19,20,23,22,24,25,21]
+gb-trace iteration=2 subcycle id=C5 vertices=[40,41,43,46,45,47,51,52,44,42]
+gb-trace iteration=2 subcycle id=C6 vertices=[48,50,49]
+gb-trace iteration=2 subcycle id=C7 vertices=[59,60,64,63,62,61]
+gb-trace iteration=2 subcycle id=C8 vertices=[65,66,69,70,68,67]
+gb-trace iteration=2 subcycle id=C9 vertices=[71,72,75,74,76,77,79,78,80,81,85,87,86,88,89,90,91,73]
+gb-trace iteration=2 subcycle id=C10 vertices=[82,83,84]
+gb-trace iteration=2 subcycle id=C11 vertices=[92,93,101,105,104,106,107,103,102]
+gb-trace iteration=2 subcycle id=C12 vertices=[94,95,98,97,99,100,96]
+gb-trace iteration=2 subcycle id=C13 vertices=[108,109,110]
+gb-trace iteration=2 subcycle id=C14 vertices=[111,113,115,125,124,122,123,121,120,119,118,116,117,114,112]
+gb-trace iteration=2 subcycle id=C15 vertices=[163,169,168,166,167,165,164]
+gb-trace iteration=2 merge C1 + C2 = C16
+gb-trace iteration=2 merge C15 + C16 = C17
+gb-trace iteration=2 merge C3 + C4 = C18
+gb-trace iteration=2 merge C17 + C5 = C19
+gb-trace iteration=2 merge C18 + C19 = C20
+gb-trace iteration=2 merge C10 + C9 = C21
+gb-trace iteration=2 merge C20 + C6 = C22
+gb-trace iteration=2 merge C8 + C7 = C23
+gb-trace iteration=2 merge C22 + C23 = C24
+gb-trace iteration=2 resulting id=C14 vertices=[111,113,115,125,124,122,123,121,120,119,118,116,117,114,112]
+gb-trace iteration=2 resulting id=C13 vertices=[108,109,110]
+gb-trace iteration=2 resulting id=C12 vertices=[94,95,98,97,99,100,96]
+gb-trace iteration=2 resulting id=C11 vertices=[92,93,101,105,104,106,107,103,102]
+gb-trace iteration=2 resulting id=C21 vertices=[82,83,84,85,87,86,88,89,90,91,73,71,72,75,74,76,77,79,78,80,81]
+gb-trace iteration=2 resulting id=C24 vertices=[15,17,19,21,25,24,22,23,20,18,16,14,11,10,9,8,6,7,198,1,197,196,2,3,187,195,194,188,189,193,192,190,191,186,4,5,183,185,184,182,181,180,179,178,177,176,174,175,173,171,172,170,169,168,166,167,165,164,163,162,132,133,137,159,161,160,158,144,145,157,156,154,155,153,152,146,147,149,151,150,148,143,142,141,140,138,139,136,134,135,131,130,129,127,128,126,56,57,59,61,62,63,65,67,68,70,69,66,64,60,58,55,54,53,37,38,40,42,44,52,51,50,49,48,47,45,46,43,41,39,36,34,35,33,32,31,29,30,28,27,26,12,13]
+cut arcs by clause length (length:number) = {3: 8, 5: 4}
+number of added block clauses (this increment) = 12
+number of added block clauses (accumulated) = 38
+add block clauses time = 197.838us
+increment time = 242.222us
+
+CEGAR iteration...
+cegar iteration = 3
+sat solving time = 647.976us
+number of subcycles found = 19
+cycle lengths before merge (length:number) = {3: 4, 4: 2, 5: 2, 6: 2, 7: 3, 11: 1, 16: 1, 17: 1, 26: 1, 27: 1, 38: 1}
+merge operation: 16 + 4 = 20
+merge operation: 3 + 20 = 23
+merge operation: 7 + 38 = 45
+merge operation: 3 + 26 = 29
+merge operation: 17 + 4 = 21
+merge operation: 7 + 21 = 28
+merge operation: 7 + 3 = 10
+number of merge operations = 7
+number of resulting cycles = 12
+cycle lengths after merge (length:number) = {3: 1, 5: 2, 6: 2, 10: 1, 11: 1, 23: 1, 27: 1, 28: 1, 29: 1, 45: 1}
+gb-trace iteration=3 subcycle id=C1 vertices=[1,2,196,195,187,3,4,186,185,184,183,5,6,7,198,197]
+gb-trace iteration=3 subcycle id=C2 vertices=[8,182,181,180,176,177,179,178,175,174,26,12,13,14,11,10,9]
+gb-trace iteration=3 subcycle id=C3 vertices=[15,17,18,16]
+gb-trace iteration=3 subcycle id=C4 vertices=[19,20,23,22,24,25,21]
+gb-trace iteration=3 subcycle id=C5 vertices=[27,28,30,33,32,31,29]
+gb-trace iteration=3 subcycle id=C6 vertices=[34,35,36]
+gb-trace iteration=3 subcycle id=C7 vertices=[37,38,39,41,40,42,43,46,45,44,52,55,54,56,57,58,60,59,61,111,112,114,113,115,125,126,128,131,130,132,162,170,172,173,171,129,127,53]
+gb-trace iteration=3 subcycle id=C8 vertices=[47,51,50,49,48]
+gb-trace iteration=3 subcycle id=C9 vertices=[62,63,64,66,65,67,68,69,70,72,71,73,91,95,94,93,101,105,106,104,103,107,109,110,108,102,92]
+gb-trace iteration=3 subcycle id=C10 vertices=[74,76,78,79,77,75]
+gb-trace iteration=3 subcycle id=C11 vertices=[80,86,88,90,89,87,85,84,83,82,81]
+gb-trace iteration=3 subcycle id=C12 vertices=[96,100,99,98,97]
+gb-trace iteration=3 subcycle id=C13 vertices=[116,117,120,121,119,118]
+gb-trace iteration=3 subcycle id=C14 vertices=[122,123,124]
+gb-trace iteration=3 subcycle id=C15 vertices=[133,137,159,161,160,158,144,145,157,156,154,155,153,152,146,147,148,143,142,141,140,138,139,136,135,134]
+gb-trace iteration=3 subcycle id=C16 vertices=[149,151,150]
+gb-trace iteration=3 subcycle id=C17 vertices=[163,169,168,166,167,165,164]
+gb-trace iteration=3 subcycle id=C18 vertices=[188,189,193,194]
+gb-trace iteration=3 subcycle id=C19 vertices=[190,191,192]
+gb-trace iteration=3 merge C1 + C18 = C20
+gb-trace iteration=3 merge C19 + C20 = C21
+gb-trace iteration=3 merge C17 + C7 = C22
+gb-trace iteration=3 merge C16 + C15 = C23
+gb-trace iteration=3 merge C2 + C3 = C24
+gb-trace iteration=3 merge C4 + C24 = C25
+gb-trace iteration=3 merge C5 + C6 = C26
+gb-trace iteration=3 resulting id=C22 vertices=[163,162,132,130,131,128,126,125,115,113,114,112,111,61,59,60,58,57,56,54,55,52,44,45,46,43,42,40,41,39,38,37,53,127,129,171,173,172,170,169,168,166,167,165,164]
+gb-trace iteration=3 resulting id=C14 vertices=[122,123,124]
+gb-trace iteration=3 resulting id=C23 vertices=[149,151,150,148,143,142,141,140,138,139,136,135,134,133,137,159,161,160,158,144,145,157,156,154,155,153,152,146,147]
+gb-trace iteration=3 resulting id=C13 vertices=[116,117,120,121,119,118]
+gb-trace iteration=3 resulting id=C12 vertices=[96,100,99,98,97]
+gb-trace iteration=3 resulting id=C25 vertices=[19,17,15,13,12,26,174,175,178,179,177,176,180,181,182,8,9,10,11,14,16,18,20,23,22,24,25,21]
+gb-trace iteration=3 resulting id=C21 vertices=[190,191,192,193,194,195,196,2,1,197,198,7,6,5,183,184,185,186,4,3,187,188,189]
+gb-trace iteration=3 resulting id=C8 vertices=[47,51,50,49,48]
+gb-trace iteration=3 resulting id=C9 vertices=[62,63,64,66,65,67,68,69,70,72,71,73,91,95,94,93,101,105,106,104,103,107,109,110,108,102,92]
+gb-trace iteration=3 resulting id=C10 vertices=[74,76,78,79,77,75]
+gb-trace iteration=3 resulting id=C11 vertices=[80,86,88,90,89,87,85,84,83,82,81]
+gb-trace iteration=3 resulting id=C26 vertices=[27,28,30,33,35,36,34,32,31,29]
+cut arcs by clause length (length:number) = {3: 12, 4: 6, 6: 2, 9: 2, 15: 2}
+number of added block clauses (this increment) = 24
+number of added block clauses (accumulated) = 62
+add block clauses time = 211.527us
+increment time = 859.503us
+
+CEGAR iteration...
+cegar iteration = 4
+sat solving time = 95.737us
+number of subcycles found = 12
+cycle lengths before merge (length:number) = {3: 2, 5: 3, 6: 1, 10: 1, 11: 1, 25: 1, 33: 1, 44: 1, 48: 1}
+merge operation: 48 + 5 = 53
+merge operation: 3 + 53 = 56
+number of merge operations = 2
+number of resulting cycles = 10
+cycle lengths after merge (length:number) = {3: 1, 5: 2, 6: 1, 10: 1, 11: 1, 25: 1, 33: 1, 44: 1, 56: 1}
+gb-trace iteration=4 subcycle id=C1 vertices=[1,198,197,196,2]
+gb-trace iteration=4 subcycle id=C2 vertices=[3,187,195,194,188,189,193,192,190,191,186,185,183,184,182,8,9,181,180,176,177,179,178,175,174,26,27,28,25,24,23,22,21,19,20,18,17,15,16,14,13,12,10,11,7,6,5,4]
+gb-trace iteration=4 subcycle id=C3 vertices=[29,30,33,32,31]
+gb-trace iteration=4 subcycle id=C4 vertices=[34,35,36]
+gb-trace iteration=4 subcycle id=C5 vertices=[37,38,39,41,40,42,43,46,49,48,50,51,47,45,44,52,55,54,56,126,128,131,130,132,133,137,159,160,161,165,164,166,167,168,169,163,162,170,172,173,171,129,127,53]
+gb-trace iteration=4 subcycle id=C6 vertices=[57,58,60,64,66,65,63,62,92,93,94,95,98,99,97,96,100,101,105,104,106,107,103,102,108,109,110,112,114,113,111,61,59]
+gb-trace iteration=4 subcycle id=C7 vertices=[67,71,73,91,90,89,88,86,87,85,84,83,82,81,80,78,79,77,76,74,75,72,70,69,68]
+gb-trace iteration=4 subcycle id=C8 vertices=[115,116,117,120,121,119,118,122,123,124,125]
+gb-trace iteration=4 subcycle id=C9 vertices=[134,136,135]
+gb-trace iteration=4 subcycle id=C10 vertices=[138,139,142,143,141,140]
+gb-trace iteration=4 subcycle id=C11 vertices=[144,145,146,152,153,155,154,156,157,158]
+gb-trace iteration=4 subcycle id=C12 vertices=[147,149,151,150,148]
+gb-trace iteration=4 merge C2 + C3 = C13
+gb-trace iteration=4 merge C4 + C13 = C14
+gb-trace iteration=4 resulting id=C1 vertices=[1,198,197,196,2]
+gb-trace iteration=4 resulting id=C11 vertices=[144,145,146,152,153,155,154,156,157,158]
+gb-trace iteration=4 resulting id=C12 vertices=[147,149,151,150,148]
+gb-trace iteration=4 resulting id=C10 vertices=[138,139,142,143,141,140]
+gb-trace iteration=4 resulting id=C5 vertices=[37,38,39,41,40,42,43,46,49,48,50,51,47,45,44,52,55,54,56,126,128,131,130,132,133,137,159,160,161,165,164,166,167,168,169,163,162,170,172,173,171,129,127,53]
+gb-trace iteration=4 resulting id=C6 vertices=[57,58,60,64,66,65,63,62,92,93,94,95,98,99,97,96,100,101,105,104,106,107,103,102,108,109,110,112,114,113,111,61,59]
+gb-trace iteration=4 resulting id=C7 vertices=[67,71,73,91,90,89,88,86,87,85,84,83,82,81,80,78,79,77,76,74,75,72,70,69,68]
+gb-trace iteration=4 resulting id=C8 vertices=[115,116,117,120,121,119,118,122,123,124,125]
+gb-trace iteration=4 resulting id=C9 vertices=[134,136,135]
+gb-trace iteration=4 resulting id=C14 vertices=[34,32,31,29,27,26,174,175,178,179,177,176,180,181,9,8,182,184,183,185,186,191,190,192,193,189,188,194,195,187,3,4,5,6,7,11,10,12,13,14,16,15,17,18,20,19,21,22,23,24,25,28,30,33,35,36]
+cut arcs by clause length (length:number) = {3: 10, 4: 4, 6: 2, 7: 2, 10: 2}
+number of added block clauses (this increment) = 20
+number of added block clauses (accumulated) = 82
+add block clauses time = 164.437us
+increment time = 260.174us
+
+CEGAR iteration...
+cegar iteration = 5
+sat solving time = 49.671us
+number of subcycles found = 16
+cycle lengths before merge (length:number) = {3: 5, 4: 1, 5: 2, 7: 2, 8: 1, 20: 1, 23: 1, 27: 1, 38: 1, 39: 1}
+merge operation: 3 + 7 = 10
+merge operation: 7 + 20 = 27
+merge operation: 5 + 10 = 15
+merge operation: 3 + 8 = 11
+merge operation: 38 + 5 = 43
+merge operation: 3 + 43 = 46
+merge operation: 39 + 27 = 66
+number of merge operations = 7
+number of resulting cycles = 9
+cycle lengths after merge (length:number) = {3: 2, 4: 1, 11: 1, 15: 1, 23: 1, 27: 1, 46: 1, 66: 1}
+gb-trace iteration=5 subcycle id=C1 vertices=[1,198,197]
+gb-trace iteration=5 subcycle id=C2 vertices=[2,3,187,188,194,195,196]
+gb-trace iteration=5 subcycle id=C3 vertices=[4,186,185,183,184,182,8,9,181,180,176,177,179,178,175,174,26,27,28,25,24,23,22,21,19,20,18,17,15,16,14,13,12,10,11,7,6,5]
+gb-trace iteration=5 subcycle id=C4 vertices=[29,30,33,32,31]
+gb-trace iteration=5 subcycle id=C5 vertices=[34,35,36]
+gb-trace iteration=5 subcycle id=C6 vertices=[37,38,39,41,40,42,43,46,49,48,50,51,47,45,44,52,55,54,56,126,128,127,53]
+gb-trace iteration=5 subcycle id=C7 vertices=[57,58,60,64,63,62,92,93,94,95,98,99,97,96,100,101,105,104,106,107,103,102,108,109,110,112,114,117,116,118,122,123,124,125,115,113,111,61,59]
+gb-trace iteration=5 subcycle id=C8 vertices=[65,67,71,73,91,90,89,88,86,87,85,84,83,82,81,80,78,79,77,76,74,75,72,70,68,69,66]
+gb-trace iteration=5 subcycle id=C9 vertices=[119,120,121]
+gb-trace iteration=5 subcycle id=C10 vertices=[129,130,131,135,134,136,139,142,143,141,140,138,137,133,132,162,170,172,173,171]
+gb-trace iteration=5 subcycle id=C11 vertices=[144,145,157,158]
+gb-trace iteration=5 subcycle id=C12 vertices=[146,152,153,151,149,150,148,147]
+gb-trace iteration=5 subcycle id=C13 vertices=[154,156,155]
+gb-trace iteration=5 subcycle id=C14 vertices=[159,160,161]
+gb-trace iteration=5 subcycle id=C15 vertices=[163,164,165,167,166,168,169]
+gb-trace iteration=5 subcycle id=C16 vertices=[189,193,192,191,190]
+gb-trace iteration=5 merge C1 + C2 = C17
+gb-trace iteration=5 merge C15 + C10 = C18
+gb-trace iteration=5 merge C16 + C17 = C19
+gb-trace iteration=5 merge C13 + C12 = C20
+gb-trace iteration=5 merge C3 + C4 = C21
+gb-trace iteration=5 merge C5 + C21 = C22
+gb-trace iteration=5 merge C7 + C8 = C23
+gb-trace iteration=5 resulting id=C14 vertices=[159,160,161]
+gb-trace iteration=5 resulting id=C19 vertices=[189,188,187,3,2,1,198,197,196,195,194,193,192,191,190]
+gb-trace iteration=5 resulting id=C11 vertices=[144,145,157,158]
+gb-trace iteration=5 resulting id=C20 vertices=[154,156,155,153,151,149,150,148,147,146,152]
+gb-trace iteration=5 resulting id=C18 vertices=[163,164,165,167,166,168,169,170,172,173,171,129,130,131,135,134,136,139,142,143,141,140,138,137,133,132,162]
+gb-trace iteration=5 resulting id=C6 vertices=[37,38,39,41,40,42,43,46,49,48,50,51,47,45,44,52,55,54,56,126,128,127,53]
+gb-trace iteration=5 resulting id=C9 vertices=[119,120,121]
+gb-trace iteration=5 resulting id=C22 vertices=[34,32,31,29,27,26,174,175,178,179,177,176,180,181,9,8,182,184,183,185,186,4,5,6,7,11,10,12,13,14,16,15,17,18,20,19,21,22,23,24,25,28,30,33,35,36]
+gb-trace iteration=5 resulting id=C23 vertices=[57,58,60,64,66,69,68,70,72,75,74,76,77,79,78,80,81,82,83,84,85,87,86,88,89,90,91,73,71,67,65,63,62,92,93,94,95,98,99,97,96,100,101,105,104,106,107,103,102,108,109,110,112,114,117,116,118,122,123,124,125,115,113,111,61,59]
+cut arcs by clause length (length:number) = {3: 8, 4: 2, 6: 4, 7: 4}
+number of added block clauses (this increment) = 18
+number of added block clauses (accumulated) = 100
+add block clauses time = 167.802us
+increment time = 217.473us
+
+CEGAR iteration...
+cegar iteration = 6
+sat solving time = 108.980us
+number of subcycles found = 10
+cycle lengths before merge (length:number) = {3: 4, 5: 1, 7: 1, 9: 1, 29: 1, 50: 1, 86: 1}
+merge operation: 3 + 50 = 53
+merge operation: 5 + 3 = 8
+merge operation: 3 + 86 = 89
+merge operation: 53 + 8 = 61
+number of merge operations = 4
+number of resulting cycles = 6
+cycle lengths after merge (length:number) = {3: 1, 7: 1, 9: 1, 29: 1, 61: 1, 89: 1}
+gb-trace iteration=6 subcycle id=C1 vertices=[1,198,197]
+gb-trace iteration=6 subcycle id=C2 vertices=[2,196,195,187,188,194,193,189,190,192,191,186,185,183,184,182,8,9,181,180,176,177,179,178,175,174,26,27,28,25,24,23,22,21,19,20,18,17,15,16,14,13,12,10,11,7,6,5,4,3]
+gb-trace iteration=6 subcycle id=C3 vertices=[29,30,33,32,31]
+gb-trace iteration=6 subcycle id=C4 vertices=[34,35,36]
+gb-trace iteration=6 subcycle id=C5 vertices=[37,38,39,41,40,42,43,46,49,48,50,51,47,45,44,52,55,54,56,57,58,60,59,61,62,92,93,94,95,98,99,97,96,100,101,105,104,106,107,103,102,108,109,110,112,111,113,114,117,116,115,125,126,128,131,135,134,136,139,138,140,141,142,143,148,147,146,152,153,155,154,156,157,145,144,158,160,161,159,137,133,132,130,129,127,53]
+gb-trace iteration=6 subcycle id=C6 vertices=[63,65,67,71,73,91,90,89,88,86,87,85,84,83,82,81,80,78,79,77,76,74,75,72,70,68,69,66,64]
+gb-trace iteration=6 subcycle id=C7 vertices=[118,122,124,123,121,120,119]
+gb-trace iteration=6 subcycle id=C8 vertices=[149,151,150]
+gb-trace iteration=6 subcycle id=C9 vertices=[162,170,169,168,166,167,165,164,163]
+gb-trace iteration=6 subcycle id=C10 vertices=[171,173,172]
+gb-trace iteration=6 merge C1 + C2 = C11
+gb-trace iteration=6 merge C3 + C4 = C12
+gb-trace iteration=6 merge C8 + C5 = C13
+gb-trace iteration=6 merge C11 + C12 = C14
+gb-trace iteration=6 resulting id=C9 vertices=[162,170,169,168,166,167,165,164,163]
+gb-trace iteration=6 resulting id=C10 vertices=[171,173,172]
+gb-trace iteration=6 resulting id=C7 vertices=[118,122,124,123,121,120,119]
+gb-trace iteration=6 resulting id=C6 vertices=[63,65,67,71,73,91,90,89,88,86,87,85,84,83,82,81,80,78,79,77,76,74,75,72,70,68,69,66,64]
+gb-trace iteration=6 resulting id=C13 vertices=[149,151,150,148,143,142,141,140,138,139,136,134,135,131,128,126,125,115,116,117,114,113,111,112,110,109,108,102,103,107,106,104,105,101,100,96,97,99,98,95,94,93,92,62,61,59,60,58,57,56,54,55,52,44,45,47,51,50,48,49,46,43,42,40,41,39,38,37,53,127,129,130,132,133,137,159,161,160,158,144,145,157,156,154,155,153,152,146,147]
+gb-trace iteration=6 resulting id=C14 vertices=[1,198,197,196,195,187,188,194,193,189,190,192,191,186,185,183,184,182,8,9,181,180,176,177,179,178,175,174,26,27,29,31,32,34,36,35,33,30,28,25,24,23,22,21,19,20,18,17,15,16,14,13,12,10,11,7,6,5,4,3,2]
+cut arcs by clause length (length:number) = {3: 10, 11: 2}
+number of added block clauses (this increment) = 12
+number of added block clauses (accumulated) = 112
+add block clauses time = 138.241us
+increment time = 247.221us
+
+CEGAR iteration...
+cegar iteration = 7
+sat solving time = 295.617us
+number of subcycles found = 11
+cycle lengths before merge (length:number) = {3: 2, 7: 1, 13: 2, 14: 1, 22: 1, 27: 1, 29: 2, 38: 1}
+merge operation: 3 + 14 = 17
+merge operation: 13 + 22 = 35
+merge operation: 7 + 35 = 42
+merge operation: 29 + 27 = 56
+merge operation: 13 + 56 = 69
+number of merge operations = 5
+number of resulting cycles = 6
+cycle lengths after merge (length:number) = {3: 1, 17: 1, 29: 1, 38: 1, 42: 1, 69: 1}
+gb-trace iteration=7 subcycle id=C1 vertices=[1,197,198]
+gb-trace iteration=7 subcycle id=C2 vertices=[2,196,195,187,188,194,193,189,190,192,191,186,4,3]
+gb-trace iteration=7 subcycle id=C3 vertices=[5,183,185,184,182,8,9,181,180,176,177,179,178,175,174,26,27,29,30,28,25,24,23,22,21,19,20,18,17,15,16,14,13,12,10,11,7,6]
+gb-trace iteration=7 subcycle id=C4 vertices=[31,32,33,35,34,36,39,38,40,41,43,42,44,45,46,49,50,48,47,51,52,55,54,56,126,128,127,53,37]
+gb-trace iteration=7 subcycle id=C5 vertices=[57,58,60,64,63,62,92,93,94,95,98,99,97,96,100,101,105,104,106,107,103,102,108,109,110,112,111,61,59]
+gb-trace iteration=7 subcycle id=C6 vertices=[65,67,71,73,91,90,89,88,86,87,85,84,83,82,81,80,78,79,77,76,74,75,72,70,68,69,66]
+gb-trace iteration=7 subcycle id=C7 vertices=[113,114,117,116,118,119,120,121,123,122,124,125,115]
+gb-trace iteration=7 subcycle id=C8 vertices=[129,130,131,135,134,136,139,138,140,144,158,160,161,159,137,133,132,162,170,172,173,171]
+gb-trace iteration=7 subcycle id=C9 vertices=[141,142,143]
+gb-trace iteration=7 subcycle id=C10 vertices=[145,157,156,155,154,152,153,151,149,150,148,147,146]
+gb-trace iteration=7 subcycle id=C11 vertices=[163,164,165,167,166,168,169]
+gb-trace iteration=7 merge C1 + C2 = C12
+gb-trace iteration=7 merge C10 + C8 = C13
+gb-trace iteration=7 merge C11 + C13 = C14
+gb-trace iteration=7 merge C5 + C6 = C15
+gb-trace iteration=7 merge C7 + C15 = C16
+gb-trace iteration=7 resulting id=C9 vertices=[141,142,143]
+gb-trace iteration=7 resulting id=C12 vertices=[1,2,3,4,186,191,192,190,189,193,194,188,187,195,196,197,198]
+gb-trace iteration=7 resulting id=C3 vertices=[5,183,185,184,182,8,9,181,180,176,177,179,178,175,174,26,27,29,30,28,25,24,23,22,21,19,20,18,17,15,16,14,13,12,10,11,7,6]
+gb-trace iteration=7 resulting id=C4 vertices=[31,32,33,35,34,36,39,38,40,41,43,42,44,45,46,49,50,48,47,51,52,55,54,56,126,128,127,53,37]
+gb-trace iteration=7 resulting id=C14 vertices=[163,164,165,167,166,168,169,170,172,173,171,129,130,131,135,134,136,139,138,140,144,145,146,147,148,150,149,151,153,152,154,155,156,157,158,160,161,159,137,133,132,162]
+gb-trace iteration=7 resulting id=C16 vertices=[113,111,61,59,57,58,60,64,66,69,68,70,72,75,74,76,77,79,78,80,81,82,83,84,85,87,86,88,89,90,91,73,71,67,65,63,62,92,93,94,95,98,99,97,96,100,101,105,104,106,107,103,102,108,109,110,112,114,117,116,118,119,120,121,123,122,124,125,115]
+cut arcs by clause length (length:number) = {3: 6, 6: 4, 7: 2}
+number of added block clauses (this increment) = 12
+number of added block clauses (accumulated) = 124
+add block clauses time = 161.090us
+increment time = 456.707us
+
+CEGAR iteration...
+cegar iteration = 8
+sat solving time = 33.298us
+number of subcycles found = 14
+cycle lengths before merge (length:number) = {3: 2, 4: 2, 7: 2, 9: 2, 13: 1, 19: 1, 22: 1, 27: 1, 35: 1, 36: 1}
+merge operation: 22 + 4 = 26
+merge operation: 3 + 26 = 29
+merge operation: 9 + 4 = 13
+merge operation: 7 + 35 = 42
+merge operation: 3 + 42 = 45
+merge operation: 36 + 27 = 63
+merge operation: 13 + 63 = 76
+number of merge operations = 7
+number of resulting cycles = 7
+cycle lengths after merge (length:number) = {7: 1, 9: 1, 13: 1, 19: 1, 29: 1, 45: 1, 76: 1}
+gb-trace iteration=8 subcycle id=C1 vertices=[1,197,198,7,11,10,9,181,182,8,6,5,183,184,185,186,4,3,187,195,196,2]
+gb-trace iteration=8 subcycle id=C2 vertices=[12,26,27,29,30,28,25,24,23,22,21,19,20,18,17,15,16,14,13]
+gb-trace iteration=8 subcycle id=C3 vertices=[31,32,33,35,34,36,39,38,37]
+gb-trace iteration=8 subcycle id=C4 vertices=[40,41,43,42]
+gb-trace iteration=8 subcycle id=C5 vertices=[44,45,46,49,50,48,47,51,52]
+gb-trace iteration=8 subcycle id=C6 vertices=[53,54,55,58,60,64,63,62,92,93,94,95,98,99,97,96,100,101,105,104,106,107,103,102,108,109,110,112,111,61,59,57,56,126,128,127]
+gb-trace iteration=8 subcycle id=C7 vertices=[65,67,71,73,91,90,89,88,86,87,85,84,83,82,81,80,78,79,77,76,74,75,72,70,68,69,66]
+gb-trace iteration=8 subcycle id=C8 vertices=[113,114,117,116,118,119,120,121,123,122,124,125,115]
+gb-trace iteration=8 subcycle id=C9 vertices=[129,130,131,135,134,136,139,138,140,141,142,143,148,147,146,152,153,155,154,156,157,145,144,158,160,161,159,137,133,132,162,170,172,173,171]
+gb-trace iteration=8 subcycle id=C10 vertices=[149,150,151]
+gb-trace iteration=8 subcycle id=C11 vertices=[163,164,165,167,166,168,169]
+gb-trace iteration=8 subcycle id=C12 vertices=[174,176,180,179,177,178,175]
+gb-trace iteration=8 subcycle id=C13 vertices=[188,194,193,189]
+gb-trace iteration=8 subcycle id=C14 vertices=[190,192,191]
+gb-trace iteration=8 merge C1 + C13 = C15
+gb-trace iteration=8 merge C14 + C15 = C16
+gb-trace iteration=8 merge C3 + C4 = C17
+gb-trace iteration=8 merge C11 + C9 = C18
+gb-trace iteration=8 merge C10 + C18 = C19
+gb-trace iteration=8 merge C6 + C7 = C20
+gb-trace iteration=8 merge C8 + C20 = C21
+gb-trace iteration=8 resulting id=C12 vertices=[174,176,180,179,177,178,175]
+gb-trace iteration=8 resulting id=C2 vertices=[12,26,27,29,30,28,25,24,23,22,21,19,20,18,17,15,16,14,13]
+gb-trace iteration=8 resulting id=C17 vertices=[31,32,33,35,34,36,39,41,43,42,40,38,37]
+gb-trace iteration=8 resulting id=C16 vertices=[190,189,188,187,3,4,186,185,184,183,5,6,8,182,181,9,10,11,7,198,197,1,2,196,195,194,193,192,191]
+gb-trace iteration=8 resulting id=C5 vertices=[44,45,46,49,50,48,47,51,52]
+gb-trace iteration=8 resulting id=C19 vertices=[149,147,146,152,153,155,154,156,157,145,144,158,160,161,159,137,133,132,162,163,164,165,167,166,168,169,170,172,173,171,129,130,131,135,134,136,139,138,140,141,142,143,148,150,151]
+gb-trace iteration=8 resulting id=C21 vertices=[113,111,61,59,57,56,126,128,127,53,54,55,58,60,64,66,69,68,70,72,75,74,76,77,79,78,80,81,82,83,84,85,87,86,88,89,90,91,73,71,67,65,63,62,92,93,94,95,98,99,97,96,100,101,105,104,106,107,103,102,108,109,110,112,114,117,116,118,119,120,121,123,122,124,125,115]
+cut arcs by clause length (length:number) = {3: 8, 4: 2, 5: 4}
+number of added block clauses (this increment) = 14
+number of added block clauses (accumulated) = 138
+add block clauses time = 171.691us
+increment time = 204.989us
+
+CEGAR iteration...
+cegar iteration = 9
+sat solving time = 219.527us
+number of subcycles found = 9
+cycle lengths before merge (length:number) = {3: 3, 10: 1, 11: 1, 13: 1, 27: 1, 50: 1, 78: 1}
+merge operation: 3 + 50 = 53
+merge operation: 13 + 78 = 91
+merge operation: 27 + 91 = 118
+merge operation: 53 + 11 = 64
+merge operation: 3 + 10 = 13
+merge operation: 64 + 13 = 77
+merge operation: 118 + 3 = 121
+number of merge operations = 7
+number of resulting cycles = 2
+cycle lengths after merge (length:number) = {77: 1, 121: 1}
+gb-trace iteration=9 subcycle id=C1 vertices=[1,197,198]
+gb-trace iteration=9 subcycle id=C2 vertices=[2,196,195,187,188,194,193,189,190,192,191,186,185,183,184,182,8,9,181,180,176,177,179,178,175,174,26,27,28,25,24,23,22,21,19,20,18,17,15,16,14,13,12,10,11,7,6,5,4,3]
+gb-trace iteration=9 subcycle id=C3 vertices=[29,30,33,32,34,35,36,39,38,37,31]
+gb-trace iteration=9 subcycle id=C4 vertices=[40,41,43,46,45,47,51,52,44,42]
+gb-trace iteration=9 subcycle id=C5 vertices=[48,49,50]
+gb-trace iteration=9 subcycle id=C6 vertices=[53,54,55,58,60,64,63,62,92,93,94,95,98,99,97,96,100,101,105,104,106,107,103,102,108,109,110,112,111,61,59,57,56,126,128,131,130,132,133,134,135,136,139,142,141,143,148,147,149,150,151,153,152,146,145,157,158,144,140,138,137,159,160,161,165,164,166,167,168,169,163,162,170,172,173,171,129,127]
+gb-trace iteration=9 subcycle id=C7 vertices=[65,67,71,73,91,90,89,88,86,87,85,84,83,82,81,80,78,79,77,76,74,75,72,70,68,69,66]
+gb-trace iteration=9 subcycle id=C8 vertices=[113,114,117,116,118,119,120,121,123,122,124,125,115]
+gb-trace iteration=9 subcycle id=C9 vertices=[154,155,156]
+gb-trace iteration=9 merge C1 + C2 = C10
+gb-trace iteration=9 merge C8 + C6 = C11
+gb-trace iteration=9 merge C7 + C11 = C12
+gb-trace iteration=9 merge C10 + C3 = C13
+gb-trace iteration=9 merge C5 + C4 = C14
+gb-trace iteration=9 merge C13 + C14 = C15
+gb-trace iteration=9 merge C12 + C9 = C16
+gb-trace iteration=9 resulting id=C15 vertices=[1,2,3,4,5,6,7,11,10,12,13,14,16,15,17,18,20,19,21,22,23,24,25,28,30,33,32,34,35,36,39,41,43,46,45,47,48,49,50,51,52,44,42,40,38,37,31,29,27,26,174,175,178,179,177,176,180,181,9,8,182,184,183,185,186,191,192,190,189,193,194,188,187,195,196,197,198]
+gb-trace iteration=9 resulting id=C16 vertices=[65,67,71,73,91,90,89,88,86,87,85,84,83,82,81,80,78,79,77,76,74,75,72,70,68,69,66,64,60,58,55,54,53,127,129,171,173,172,170,162,163,169,168,167,166,164,165,161,160,159,137,138,140,144,158,157,145,146,152,154,156,155,153,151,150,149,147,148,143,141,142,139,136,135,134,133,132,130,131,128,126,56,57,59,61,111,113,115,125,124,122,123,121,120,119,118,116,117,114,112,110,109,108,102,103,107,106,104,105,101,100,96,97,99,98,95,94,93,92,62,63]
+cut arcs by clause length (length:number) = {3: 4}
+number of added block clauses (this increment) = 4
+number of added block clauses (accumulated) = 142
+add block clauses time = 162.030us
+increment time = 381.557us
+
+CEGAR iteration...
+cegar iteration = 10
+sat solving time = 118.536us
+number of subcycles found = 14
+cycle lengths before merge (length:number) = {3: 3, 4: 1, 5: 2, 7: 1, 10: 1, 13: 1, 17: 1, 18: 1, 27: 2, 56: 1}
+merge operation: 5 + 4 = 9
+merge operation: 3 + 17 = 20
+merge operation: 3 + 18 = 21
+merge operation: 7 + 9 = 16
+merge operation: 56 + 10 = 66
+merge operation: 13 + 66 = 79
+merge operation: 27 + 79 = 106
+merge operation: 3 + 106 = 109
+number of merge operations = 8
+number of resulting cycles = 6
+cycle lengths after merge (length:number) = {5: 1, 16: 1, 20: 1, 21: 1, 27: 1, 109: 1}
+gb-trace iteration=10 subcycle id=C1 vertices=[1,198,7,6,8,9,181,182,184,185,183,5,4,186,191,190,192,193,189,188,194,195,187,3,2,196,197]
+gb-trace iteration=10 subcycle id=C2 vertices=[10,12,13,14,11]
+gb-trace iteration=10 subcycle id=C3 vertices=[15,16,18,17]
+gb-trace iteration=10 subcycle id=C4 vertices=[19,20,23,22,24,25,21]
+gb-trace iteration=10 subcycle id=C5 vertices=[26,27,28,30,29,31,32,33,35,34,36,39,38,37,53,54,55,58,60,64,63,62,92,93,94,95,98,99,97,96,100,101,105,104,106,107,103,102,108,109,110,112,111,61,59,57,56,126,128,127,129,171,172,173,175,174]
+gb-trace iteration=10 subcycle id=C6 vertices=[40,41,43,46,45,47,51,52,44,42]
+gb-trace iteration=10 subcycle id=C7 vertices=[48,49,50]
+gb-trace iteration=10 subcycle id=C8 vertices=[65,67,71,73,91,90,89,88,86,87,85,84,83,82,81,80,78,79,77,76,74,75,72,70,68,69,66]
+gb-trace iteration=10 subcycle id=C9 vertices=[113,114,117,116,118,119,120,121,123,122,124,125,115]
+gb-trace iteration=10 subcycle id=C10 vertices=[130,131,135,136,134,133,137,159,160,161,165,164,163,169,170,162,132]
+gb-trace iteration=10 subcycle id=C11 vertices=[138,139,142,141,143,148,147,149,150,151,153,152,146,145,157,158,144,140]
+gb-trace iteration=10 subcycle id=C12 vertices=[154,155,156]
+gb-trace iteration=10 subcycle id=C13 vertices=[166,167,168]
+gb-trace iteration=10 subcycle id=C14 vertices=[176,180,179,178,177]
+gb-trace iteration=10 merge C2 + C3 = C15
+gb-trace iteration=10 merge C13 + C10 = C16
+gb-trace iteration=10 merge C12 + C11 = C17
+gb-trace iteration=10 merge C4 + C15 = C18
+gb-trace iteration=10 merge C5 + C6 = C19
+gb-trace iteration=10 merge C9 + C19 = C20
+gb-trace iteration=10 merge C8 + C20 = C21
+gb-trace iteration=10 merge C7 + C21 = C22
+gb-trace iteration=10 resulting id=C1 vertices=[1,198,7,6,8,9,181,182,184,185,183,5,4,186,191,190,192,193,189,188,194,195,187,3,2,196,197]
+gb-trace iteration=10 resulting id=C16 vertices=[166,164,163,169,170,162,132,130,131,135,136,134,133,137,159,160,161,165,167,168]
+gb-trace iteration=10 resulting id=C14 vertices=[176,180,179,178,177]
+gb-trace iteration=10 resulting id=C17 vertices=[154,152,146,145,157,158,144,140,138,139,142,141,143,148,147,149,150,151,153,155,156]
+gb-trace iteration=10 resulting id=C18 vertices=[19,17,15,13,12,10,11,14,16,18,20,23,22,24,25,21]
+gb-trace iteration=10 resulting id=C22 vertices=[48,49,50,51,52,44,42,40,38,37,53,54,55,58,60,64,66,69,68,70,72,75,74,76,77,79,78,80,81,82,83,84,85,87,86,88,89,90,91,73,71,67,65,63,62,92,93,94,95,98,99,97,96,100,101,105,104,106,107,103,102,108,109,110,112,114,117,116,118,119,120,121,123,122,124,125,115,113,111,61,59,57,56,126,128,127,129,171,172,173,175,174,26,27,28,30,29,31,32,33,35,34,36,39,41,43,46,45,47]
+cut arcs by clause length (length:number) = {3: 6, 4: 2, 6: 2, 7: 2}
+number of added block clauses (this increment) = 12
+number of added block clauses (accumulated) = 154
+add block clauses time = 173.687us
+increment time = 292.223us
+
+CEGAR iteration...
+cegar iteration = 11
+sat solving time = 37.170us
+number of subcycles found = 10
+cycle lengths before merge (length:number) = {3: 3, 4: 1, 7: 1, 10: 1, 13: 1, 27: 1, 38: 1, 90: 1}
+merge operation: 90 + 4 = 94
+merge operation: 3 + 38 = 41
+merge operation: 94 + 3 = 97
+merge operation: 13 + 97 = 110
+merge operation: 27 + 110 = 137
+merge operation: 3 + 10 = 13
+merge operation: 137 + 7 = 144
+merge operation: 13 + 144 = 157
+number of merge operations = 8
+number of resulting cycles = 2
+cycle lengths after merge (length:number) = {41: 1, 157: 1}
+gb-trace iteration=11 subcycle id=C1 vertices=[1,198,7,6,8,9,10,11,14,13,12,26,27,28,30,29,31,32,33,35,34,36,39,38,37,53,54,55,58,60,64,63,62,92,93,94,95,98,99,97,96,100,101,105,104,106,107,103,102,108,109,110,112,111,61,59,57,56,126,128,127,129,171,172,173,175,174,176,180,181,182,184,185,183,5,4,186,191,190,192,193,189,188,194,195,187,3,2,196,197]
+gb-trace iteration=11 subcycle id=C2 vertices=[15,16,18,17]
+gb-trace iteration=11 subcycle id=C3 vertices=[19,20,23,22,24,25,21]
+gb-trace iteration=11 subcycle id=C4 vertices=[40,41,43,46,45,47,51,52,44,42]
+gb-trace iteration=11 subcycle id=C5 vertices=[48,49,50]
+gb-trace iteration=11 subcycle id=C6 vertices=[65,67,71,73,91,90,89,88,86,87,85,84,83,82,81,80,78,79,77,76,74,75,72,70,68,69,66]
+gb-trace iteration=11 subcycle id=C7 vertices=[113,114,117,116,118,119,120,121,123,122,124,125,115]
+gb-trace iteration=11 subcycle id=C8 vertices=[130,131,135,136,134,133,137,138,139,142,143,141,140,144,145,146,147,148,150,149,151,153,152,154,155,156,157,158,160,159,161,165,164,163,169,170,162,132]
+gb-trace iteration=11 subcycle id=C9 vertices=[166,167,168]
+gb-trace iteration=11 subcycle id=C10 vertices=[177,179,178]
+gb-trace iteration=11 merge C1 + C2 = C11
+gb-trace iteration=11 merge C9 + C8 = C12
+gb-trace iteration=11 merge C11 + C10 = C13
+gb-trace iteration=11 merge C7 + C13 = C14
+gb-trace iteration=11 merge C6 + C14 = C15
+gb-trace iteration=11 merge C5 + C4 = C16
+gb-trace iteration=11 merge C15 + C3 = C17
+gb-trace iteration=11 merge C16 + C17 = C18
+gb-trace iteration=11 resulting id=C12 vertices=[166,164,163,169,170,162,132,130,131,135,136,134,133,137,138,139,142,143,141,140,144,145,146,147,148,150,149,151,153,152,154,155,156,157,158,160,159,161,165,167,168]
+gb-trace iteration=11 resulting id=C18 vertices=[48,49,50,51,52,44,42,40,38,37,53,54,55,58,60,64,66,69,68,70,72,75,74,76,77,79,78,80,81,82,83,84,85,87,86,88,89,90,91,73,71,67,65,63,62,92,93,94,95,98,99,97,96,100,101,105,104,106,107,103,102,108,109,110,112,114,117,116,118,119,120,121,123,122,124,125,115,113,111,61,59,57,56,126,128,127,129,171,172,173,175,174,176,177,178,179,180,181,182,184,185,183,5,4,186,191,190,192,193,189,188,194,195,187,3,2,196,197,1,198,7,6,8,9,10,11,14,16,18,20,23,22,24,25,21,19,17,15,13,12,26,27,28,30,29,31,32,33,35,34,36,39,41,43,46,45,47]
+cut arcs by clause length (length:number) = {3: 4}
+number of added block clauses (this increment) = 4
+number of added block clauses (accumulated) = 158
+add block clauses time = 178.429us
+increment time = 215.599us
+
+CEGAR iteration...
+cegar iteration = 12
+sat solving time = 47.950us
+number of subcycles found = 10
+cycle lengths before merge (length:number) = {3: 2, 4: 1, 7: 2, 10: 1, 13: 1, 25: 1, 27: 1, 99: 1}
+merge operation: 99 + 4 = 103
+merge operation: 7 + 103 = 110
+merge operation: 3 + 110 = 113
+merge operation: 13 + 113 = 126
+merge operation: 27 + 126 = 153
+merge operation: 3 + 10 = 13
+merge operation: 153 + 7 = 160
+merge operation: 13 + 160 = 173
+number of merge operations = 8
+number of resulting cycles = 2
+cycle lengths after merge (length:number) = {25: 1, 173: 1}
+gb-trace iteration=12 subcycle id=C1 vertices=[1,198,7,6,8,9,10,11,14,13,12,26,27,28,30,29,31,32,33,35,34,36,39,38,37,53,54,55,58,60,64,63,62,92,93,94,95,98,99,97,96,100,101,105,104,106,107,103,102,108,109,110,112,111,61,59,57,56,126,128,127,129,130,131,135,136,134,133,132,162,170,172,171,173,175,174,176,180,181,182,184,185,183,5,4,186,191,190,192,193,189,188,194,195,187,3,2,196,197]
+gb-trace iteration=12 subcycle id=C2 vertices=[15,16,18,17]
+gb-trace iteration=12 subcycle id=C3 vertices=[19,20,23,22,24,25,21]
+gb-trace iteration=12 subcycle id=C4 vertices=[40,41,43,46,45,47,51,52,44,42]
+gb-trace iteration=12 subcycle id=C5 vertices=[48,49,50]
+gb-trace iteration=12 subcycle id=C6 vertices=[65,67,71,73,91,90,89,88,86,87,85,84,83,82,81,80,78,79,77,76,74,75,72,70,68,69,66]
+gb-trace iteration=12 subcycle id=C7 vertices=[113,114,117,116,118,119,120,121,123,122,124,125,115]
+gb-trace iteration=12 subcycle id=C8 vertices=[137,138,139,142,143,141,140,144,145,146,147,148,150,149,151,153,152,154,155,156,157,158,160,161,159]
+gb-trace iteration=12 subcycle id=C9 vertices=[163,169,168,166,167,165,164]
+gb-trace iteration=12 subcycle id=C10 vertices=[177,179,178]
+gb-trace iteration=12 merge C1 + C2 = C11
+gb-trace iteration=12 merge C9 + C11 = C12
+gb-trace iteration=12 merge C10 + C12 = C13
+gb-trace iteration=12 merge C7 + C13 = C14
+gb-trace iteration=12 merge C6 + C14 = C15
+gb-trace iteration=12 merge C5 + C4 = C16
+gb-trace iteration=12 merge C15 + C3 = C17
+gb-trace iteration=12 merge C16 + C17 = C18
+gb-trace iteration=12 resulting id=C8 vertices=[137,138,139,142,143,141,140,144,145,146,147,148,150,149,151,153,152,154,155,156,157,158,160,161,159]
+gb-trace iteration=12 resulting id=C18 vertices=[48,49,50,51,52,44,42,40,38,37,53,54,55,58,60,64,66,69,68,70,72,75,74,76,77,79,78,80,81,82,83,84,85,87,86,88,89,90,91,73,71,67,65,63,62,92,93,94,95,98,99,97,96,100,101,105,104,106,107,103,102,108,109,110,112,114,117,116,118,119,120,121,123,122,124,125,115,113,111,61,59,57,56,126,128,127,129,130,131,135,136,134,133,132,162,163,164,165,167,166,168,169,170,172,171,173,175,174,176,177,178,179,180,181,182,184,185,183,5,4,186,191,190,192,193,189,188,194,195,187,3,2,196,197,1,198,7,6,8,9,10,11,14,16,18,20,23,22,24,25,21,19,17,15,13,12,26,27,28,30,29,31,32,33,35,34,36,39,41,43,46,45,47]
+cut arcs by clause length (length:number) = {3: 4}
+number of added block clauses (this increment) = 4
+number of added block clauses (accumulated) = 162
+add block clauses time = 168.802us
+increment time = 216.752us
+
+CEGAR iteration...
+cegar iteration = 13
+sat solving time = 90.862us
+number of subcycles found = 11
+cycle lengths before merge (length:number) = {3: 2, 4: 1, 7: 2, 10: 1, 13: 1, 25: 1, 27: 2, 72: 1}
+merge operation: 25 + 72 = 97
+merge operation: 7 + 97 = 104
+merge operation: 13 + 27 = 40
+merge operation: 27 + 40 = 67
+merge operation: 104 + 3 = 107
+merge operation: 3 + 10 = 13
+merge operation: 107 + 67 = 174
+merge operation: 7 + 4 = 11
+merge operation: 174 + 13 = 187
+merge operation: 11 + 187 = 198
+number of merge operations = 10
+number of resulting cycles = 1
+cycle lengths after merge (length:number) = {198: 1}
+gb-trace iteration=13 subcycle id=C1 vertices=[1,198,7,6,8,182,184,185,183,5,4,186,191,190,192,193,189,188,194,195,187,3,2,196,197]
+gb-trace iteration=13 subcycle id=C2 vertices=[9,181,180,176,174,175,173,171,172,170,162,132,133,137,159,161,160,158,144,145,157,156,154,155,153,152,146,147,149,151,150,148,143,142,141,140,138,139,136,134,135,131,130,129,127,128,126,56,57,58,55,54,53,37,38,39,36,34,35,33,32,31,29,30,28,27,26,12,13,14,11,10]
+gb-trace iteration=13 subcycle id=C3 vertices=[15,16,18,17]
+gb-trace iteration=13 subcycle id=C4 vertices=[19,20,23,22,24,25,21]
+gb-trace iteration=13 subcycle id=C5 vertices=[40,41,43,46,45,47,51,52,44,42]
+gb-trace iteration=13 subcycle id=C6 vertices=[48,49,50]
+gb-trace iteration=13 subcycle id=C7 vertices=[59,60,64,63,62,92,93,94,95,98,99,97,96,100,101,105,104,106,107,103,102,108,109,110,112,111,61]
+gb-trace iteration=13 subcycle id=C8 vertices=[65,67,71,73,91,90,89,88,86,87,85,84,83,82,81,80,78,79,77,76,74,75,72,70,68,69,66]
+gb-trace iteration=13 subcycle id=C9 vertices=[113,114,117,116,118,119,120,121,123,122,124,125,115]
+gb-trace iteration=13 subcycle id=C10 vertices=[163,164,165,167,166,168,169]
+gb-trace iteration=13 subcycle id=C11 vertices=[177,179,178]
+gb-trace iteration=13 merge C1 + C2 = C12
+gb-trace iteration=13 merge C10 + C12 = C13
+gb-trace iteration=13 merge C9 + C7 = C14
+gb-trace iteration=13 merge C8 + C14 = C15
+gb-trace iteration=13 merge C13 + C11 = C16
+gb-trace iteration=13 merge C6 + C5 = C17
+gb-trace iteration=13 merge C16 + C15 = C18
+gb-trace iteration=13 merge C4 + C3 = C19
+gb-trace iteration=13 merge C18 + C17 = C20
+gb-trace iteration=13 merge C19 + C20 = C21
+gb-trace iteration=13 resulting id=C21 vertices=[19,17,15,13,12,26,27,28,30,29,31,32,33,35,34,36,39,41,43,46,45,47,48,49,50,51,52,44,42,40,38,37,53,54,55,58,60,64,66,69,68,70,72,75,74,76,77,79,78,80,81,82,83,84,85,87,86,88,89,90,91,73,71,67,65,63,62,92,93,94,95,98,99,97,96,100,101,105,104,106,107,103,102,108,109,110,112,114,117,116,118,119,120,121,123,122,124,125,115,113,111,61,59,57,56,126,128,127,129,130,131,135,134,136,139,138,140,141,142,143,148,150,151,149,147,146,152,153,155,154,156,157,145,144,158,160,161,159,137,133,132,162,163,164,165,167,166,168,169,170,172,171,173,175,174,176,177,178,179,180,181,182,184,185,183,5,4,186,191,190,192,193,189,188,194,195,187,3,2,196,197,1,198,7,6,8,9,10,11,14,16,18,20,23,22,24,25,21]
+number of added block clauses (this increment) = 0
+number of added block clauses (accumulated) = 162
+add block clauses time = 177.356us
+increment time = 268.218us
+
+hamiltonian cycle found by 2-opt
+solution: 
+19 17 15 13 12 26 27 28 30 29 31 32 33 35 34 36 39 41 43 46 45 47 48 49 50 51 52 44 42 40 38 37 53 54 55 58 60 64 66 69 68 70 72 75 74 76 77 79 78 80 81 82 83 84 85 87 86 88 89 90 91 73 71 67 65 63 62 92 93 94 95 98 99 97 96 100 101 105 104 106 107 103 102 108 109 110 112 114 117 116 118 119 120 121 123 122 124 125 115 113 111 61 59 57 56 126 128 127 129 130 131 135 134 136 139 138 140 141 142 143 148 150 151 149 147 146 152 153 155 154 156 157 145 144 158 160 161 159 137 133 132 162 163 164 165 167 166 168 169 170 172 171 173 175 174 176 177 178 179 180 181 182 184 185 183 5 4 186 191 190 192 193 189 188 194 195 187 3 2 196 197 1 198 7 6 8 9 10 11 14 16 18 20 23 22 24 25 21
+
+s SATISFIABLE
+overall cegar iterations = 13
+overall number of added block clauses = 162
+solving time = 6.171582ms
+overall time = 6.344588ms

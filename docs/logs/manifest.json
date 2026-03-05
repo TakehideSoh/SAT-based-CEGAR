@@ -1,0 +1,25 @@
+{
+  "files": [
+    "Aanna-le32ge3.log",
+    "Bbinary55.log",
+    "Cconcentric-36.log",
+    "DK13+K13,touching.log",
+    "Dnontough,5,3.log",
+    "Eraman,3,47,1,1.log",
+    "Ffleischner-half.log",
+    "Ffleischner.log",
+    "FfleischnerG3.log",
+    "Ggiraffe10x10.log",
+    "Ggiraffe10x10aaaa.log",
+    "Hhalin-pi128.log",
+    "Hhalin-pi198.log",
+    "Pgrid+corners8x10.log",
+    "Q5cube.log",
+    "Rrandom+cycle,64,64,0,0,0,0,0,1,1,3142.log",
+    "Ssierp444.log",
+    "TtripartiteK456.log",
+    "Ucontig-ME-to-all.log",
+    "Vbauer-broersma-veldman.log",
+    "Wgrinberg,1,2.log"
+  ]
+}

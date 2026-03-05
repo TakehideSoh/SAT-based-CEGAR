@@ -1,0 +1,45 @@
+solve benchmarks/ham-examples-col/Ucontig-ME-to-all.col
+file input time = 131.540us
+encoding time = 301.815us
+
+encoding clauses number = 1702
+
+CEGAR iteration...
+cegar iteration = 0
+sat solving time = 136.417us
+number of subcycles found = 6
+cycle lengths before merge (length:number) = {3: 1, 5: 2, 8: 1, 13: 1, 16: 1}
+merge operation: 16 + 5 = 21
+merge operation: 3 + 21 = 24
+merge operation: 5 + 13 = 18
+merge operation: 8 + 24 = 32
+merge operation: 18 + 32 = 50
+number of merge operations = 5
+number of resulting cycles = 1
+cycle lengths after merge (length:number) = {50: 1}
+gb-trace iteration=0 subcycle id=C1 vertices=[AL,!,!!,ME,NH,VT,NY,NJ,DE,PA,MD,VA,NC,SC,GA,FL]
+gb-trace iteration=0 subcycle id=C2 vertices=[AZ,UT,CO,WY,MT,ND,MN,IA,SD,NE,KS,OK,NM]
+gb-trace iteration=0 subcycle id=C3 vertices=[AR,TX,LA,MS,TN]
+gb-trace iteration=0 subcycle id=C4 vertices=[CA,OR,WA,ID,NV]
+gb-trace iteration=0 subcycle id=C5 vertices=[CT,RI,MA]
+gb-trace iteration=0 subcycle id=C6 vertices=[IL,WI,MI,IN,OH,WV,KY,MO]
+gb-trace iteration=0 merge C1 + C3 = C7
+gb-trace iteration=0 merge C5 + C7 = C8
+gb-trace iteration=0 merge C4 + C2 = C9
+gb-trace iteration=0 merge C6 + C8 = C10
+gb-trace iteration=0 merge C9 + C10 = C11
+gb-trace iteration=0 resulting id=C11 vertices=[CA,OR,WA,ID,UT,CO,WY,MT,ND,MN,WI,MI,IN,OH,PA,DE,NJ,NY,CT,RI,MA,VT,NH,ME,!!,!,TN,AR,TX,LA,MS,AL,FL,GA,SC,NC,VA,MD,WV,KY,MO,IL,IA,SD,NE,KS,OK,NM,AZ,NV]
+number of added block clauses (this increment) = 0
+number of added block clauses (accumulated) = 0
+add block clauses time = 126.509us
+increment time = 262.926us
+
+hamiltonian cycle found by 2-opt
+solution: 
+CA OR WA ID UT CO WY MT ND MN WI MI IN OH PA DE NJ NY CT RI MA VT NH ME !! ! TN AR TX LA MS AL FL GA SC NC VA MD WV KY MO IL IA SD NE KS OK NM AZ NV
+
+s SATISFIABLE
+overall cegar iterations = 0
+overall number of added block clauses = 0
+solving time = 1.212671ms
+overall time = 1.345393ms

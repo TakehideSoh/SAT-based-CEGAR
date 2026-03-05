@@ -1,0 +1,80 @@
+solve benchmarks/ham-examples-col/DK13+K13,touching.col
+file input time = 121.740us
+encoding time = 260.196us
+
+encoding clauses number = 1878
+
+CEGAR iteration...
+cegar iteration = 0
+sat solving time = 60.439us
+number of subcycles found = 8
+cycle lengths before merge (length:number) = {3: 7, 4: 1}
+merge operation: 3 + 3 = 6
+merge operation: 3 + 3 = 6
+merge operation: 3 + 3 = 6
+merge operation: 6 + 6 = 12
+merge operation: 4 + 6 = 10
+merge operation: 3 + 10 = 13
+number of merge operations = 6
+number of resulting cycles = 2
+cycle lengths after merge (length:number) = {12: 1, 13: 1}
+gb-trace iteration=0 subcycle id=C1 vertices=[-1,0:0,0:1]
+gb-trace iteration=0 subcycle id=C2 vertices=[0:2,0:3,0:4]
+gb-trace iteration=0 subcycle id=C3 vertices=[0:5,0:6,0:7]
+gb-trace iteration=0 subcycle id=C4 vertices=[0:8,0:9,0:11,0:10]
+gb-trace iteration=0 subcycle id=C5 vertices=[1:1,1:2,1:3]
+gb-trace iteration=0 subcycle id=C6 vertices=[1:4,1:5,1:6]
+gb-trace iteration=0 subcycle id=C7 vertices=[1:7,1:8,1:9]
+gb-trace iteration=0 subcycle id=C8 vertices=[1:10,1:11,1:12]
+gb-trace iteration=0 merge C1 + C2 = C9
+gb-trace iteration=0 merge C7 + C8 = C10
+gb-trace iteration=0 merge C6 + C5 = C11
+gb-trace iteration=0 merge C10 + C11 = C12
+gb-trace iteration=0 merge C4 + C9 = C13
+gb-trace iteration=0 merge C3 + C13 = C14
+gb-trace iteration=0 resulting id=C12 vertices=[1:7,1:4,1:6,1:5,1:2,1:3,1:1,1:10,1:12,1:11,1:8,1:9]
+gb-trace iteration=0 resulting id=C14 vertices=[0:5,0:8,0:10,0:11,0:9,0:2,0:4,0:3,0:0,0:1,-1,0:6,0:7]
+cut arcs by clause length (length:number) = {12: 4}
+number of added block clauses (this increment) = 4
+number of added block clauses (accumulated) = 4
+add block clauses time = 122.888us
+increment time = 183.327us
+
+CEGAR iteration...
+cegar iteration = 1
+sat solving time = 39.410us
+number of subcycles found = 6
+cycle lengths before merge (length:number) = {4: 5, 5: 1}
+merge operation: 4 + 4 = 8
+merge operation: 5 + 8 = 13
+merge operation: 4 + 4 = 8
+merge operation: 4 + 8 = 12
+number of merge operations = 4
+number of resulting cycles = 2
+cycle lengths after merge (length:number) = {12: 1, 13: 1}
+gb-trace iteration=1 subcycle id=C1 vertices=[-1,1:12,1:1,1:11]
+gb-trace iteration=1 subcycle id=C2 vertices=[0:0,0:11,0:1,0:10]
+gb-trace iteration=1 subcycle id=C3 vertices=[0:2,0:9,0:3,0:8]
+gb-trace iteration=1 subcycle id=C4 vertices=[0:4,0:7,0:5,0:6]
+gb-trace iteration=1 subcycle id=C5 vertices=[1:2,1:10,1:3,1:9]
+gb-trace iteration=1 subcycle id=C6 vertices=[1:4,1:8,1:6,1:5,1:7]
+gb-trace iteration=1 merge C1 + C5 = C7
+gb-trace iteration=1 merge C6 + C7 = C8
+gb-trace iteration=1 merge C4 + C2 = C9
+gb-trace iteration=1 merge C3 + C9 = C10
+gb-trace iteration=1 resulting id=C8 vertices=[1:4,-1,1:11,1:1,1:12,1:10,1:3,1:9,1:2,1:8,1:6,1:5,1:7]
+gb-trace iteration=1 resulting id=C10 vertices=[0:2,0:4,0:6,0:5,0:7,0:11,0:1,0:10,0:0,0:9,0:3,0:8]
+cut arcs by clause length (length:number) = {12: 4}
+number of added block clauses (this increment) = 4
+number of added block clauses (accumulated) = 8
+add block clauses time = 82.771us
+increment time = 122.181us
+
+CEGAR iteration...
+cegar iteration = 2
+sat solving time = 22.979us
+s UNSATISFIABLE
+overall cegar iterations = 2
+overall number of added block clauses = 8
+solving time = 1.260850ms
+overall time = 1.383767ms

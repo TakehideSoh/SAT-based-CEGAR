@@ -1,0 +1,33 @@
+solve benchmarks/ham-examples-col/Eraman,3,47,1,1.col
+file input time = 111.507us
+encoding time = 132.454us
+
+encoding clauses number = 960
+
+CEGAR iteration...
+cegar iteration = 0
+sat solving time = 32.428us
+number of subcycles found = 2
+cycle lengths before merge (length:number) = {12: 1, 36: 1}
+merge operation: 36 + 12 = 48
+number of merge operations = 1
+number of resulting cycles = 1
+cycle lengths after merge (length:number) = {48: 1}
+gb-trace iteration=0 subcycle id=C1 vertices=[0,10,3,8,6,17,INF,44,43,26,29,32,33,34,22,23,37,25,20,27,41,39,45,36,42,13,4,1,2,14,31,40,46,35,24,11]
+gb-trace iteration=0 subcycle id=C2 vertices=[5,9,12,16,28,21,30,19,18,7,15,38]
+gb-trace iteration=0 merge C1 + C2 = C3
+gb-trace iteration=0 resulting id=C3 vertices=[0,10,3,8,6,17,INF,44,43,26,29,32,33,34,22,23,37,25,20,27,41,39,45,36,42,13,4,1,2,14,31,40,46,19,30,21,28,16,12,9,5,38,15,7,18,35,24,11]
+number of added block clauses (this increment) = 0
+number of added block clauses (accumulated) = 0
+add block clauses time = 64.684us
+increment time = 97.112us
+
+hamiltonian cycle found by 2-opt
+solution: 
+0 10 3 8 6 17 INF 44 43 26 29 32 33 34 22 23 37 25 20 27 41 39 45 36 42 13 4 1 2 14 31 40 46 19 30 21 28 16 12 9 5 38 15 7 18 35 24 11
+
+s SATISFIABLE
+overall cegar iterations = 0
+overall number of added block clauses = 0
+solving time = 613.811us
+overall time = 726.305us

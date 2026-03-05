@@ -1,0 +1,36 @@
+solve benchmarks/ham-examples-col/Ggiraffe10x10aaaa.col
+file input time = 204.873us
+encoding time = 357.877us
+
+encoding clauses number = 2264
+
+CEGAR iteration...
+cegar iteration = 0
+sat solving time = 683.549us
+number of subcycles found = 3
+cycle lengths before merge (length:number) = {4: 1, 6: 1, 98: 1}
+merge operation: 98 + 6 = 104
+merge operation: 4 + 104 = 108
+number of merge operations = 2
+number of resulting cycles = 1
+cycle lengths after merge (length:number) = {108: 1}
+gb-trace iteration=0 subcycle id=C1 vertices=[0.0,1.4,0.8,4.9,8.8,4.7,8.6,9.2,5.3,9.4,8.0,7.4,6.8,2.9,3.5,7.6,6.2,2.1,6.0,!4,5.4,!5,9.3,8.7,7.3,3.4,2.0,6.1,7.5,8.9,4.8,0.9,1.5,0.1,4.0,8.1,9.5,5.6,9.7,5.8,9.9,8.5,9.1,5.0,6.4,7.0,3.1,7.2,3.3,2.7,1.3,0.7,4.6,3.2,7.1,3.0,!3,4.4,!2,0.3,1.7,2.3,3.7,4.3,8.2,9.6,!6,5.5,!7,6.9,2.8,6.7,2.6,1.2,0.6,!1,4.5,!0,3.9,7.8,8.4,9.0,5.1,1.0,0.4,1.8,5.7,9.8,5.9,6.5,7.9,3.8,2.4,6.3,2.2,1.6,0.2,4.1]
+gb-trace iteration=0 subcycle id=C2 vertices=[0.5,1.9,2.5,6.6,5.2,1.1]
+gb-trace iteration=0 subcycle id=C3 vertices=[3.6,4.2,8.3,7.7]
+gb-trace iteration=0 merge C1 + C2 = C4
+gb-trace iteration=0 merge C3 + C4 = C5
+gb-trace iteration=0 resulting id=C5 vertices=[3.6,4.2,5.6,9.5,8.1,4.0,0.1,1.5,0.9,4.8,8.9,7.5,6.1,2.0,3.4,7.3,8.7,9.3,!5,5.4,!4,6.0,2.1,6.2,7.6,3.5,2.9,6.8,7.4,8.0,9.4,5.3,9.2,8.6,4.7,8.8,4.9,0.8,1.4,0.0,4.1,0.2,1.6,2.2,6.3,2.4,3.8,7.9,6.5,5.9,9.8,5.7,1.8,0.4,1.0,5.1,9.0,8.4,7.8,3.9,!0,4.5,!1,0.6,1.2,2.6,6.7,2.8,6.9,!7,5.5,!6,9.6,8.2,4.3,3.7,2.3,1.7,0.3,!2,4.4,!3,3.0,7.1,3.2,4.6,0.7,1.3,2.7,3.3,7.2,3.1,7.0,6.4,5.0,1.1,0.5,1.9,2.5,6.6,5.2,9.1,8.5,9.9,5.8,9.7,8.3,7.7]
+number of added block clauses (this increment) = 0
+number of added block clauses (accumulated) = 0
+add block clauses time = 105.213us
+increment time = 788.762us
+
+hamiltonian cycle found by 2-opt
+solution: 
+3.6 4.2 5.6 9.5 8.1 4.0 0.1 1.5 0.9 4.8 8.9 7.5 6.1 2.0 3.4 7.3 8.7 9.3 !5 5.4 !4 6.0 2.1 6.2 7.6 3.5 2.9 6.8 7.4 8.0 9.4 5.3 9.2 8.6 4.7 8.8 4.9 0.8 1.4 0.0 4.1 0.2 1.6 2.2 6.3 2.4 3.8 7.9 6.5 5.9 9.8 5.7 1.8 0.4 1.0 5.1 9.0 8.4 7.8 3.9 !0 4.5 !1 0.6 1.2 2.6 6.7 2.8 6.9 !7 5.5 !6 9.6 8.2 4.3 3.7 2.3 1.7 0.3 !2 4.4 !3 3.0 7.1 3.2 4.6 0.7 1.3 2.7 3.3 7.2 3.1 7.0 6.4 5.0 1.1 0.5 1.9 2.5 6.6 5.2 9.1 8.5 9.9 5.8 9.7 8.3 7.7
+
+s SATISFIABLE
+overall cegar iterations = 0
+overall number of added block clauses = 0
+solving time = 2.039269ms
+overall time = 2.244940ms

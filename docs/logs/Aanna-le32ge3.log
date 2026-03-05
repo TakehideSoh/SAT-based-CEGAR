@@ -1,0 +1,97 @@
+solve benchmarks/ham-examples-col/Aanna-le32ge3.col
+file input time = 150.056us
+encoding time = 216.840us
+
+encoding clauses number = 1500
+
+CEGAR iteration...
+cegar iteration = 0
+sat solving time = 496.574us
+number of subcycles found = 8
+cycle lengths before merge (length:number) = {3: 2, 4: 3, 6: 1, 9: 1, 16: 1}
+number of merge operations = 0
+number of resulting cycles = 8
+cycle lengths after merge (length:number) = {3: 2, 4: 3, 6: 1, 9: 1, 16: 1}
+gb-trace iteration=0 subcycle id=C1 vertices=[AL,PE,YS,MA,PH,HO,GR,NL,TA,KV,LI,SE,KP,KY,EF,SI]
+gb-trace iteration=0 subcycle id=C2 vertices=[KO,KE,KZ,AG,NI,PS,RT,VK,MM]
+gb-trace iteration=0 subcycle id=C3 vertices=[PR,TC,KT,MJ]
+gb-trace iteration=0 subcycle id=C4 vertices=[BT,VS,SM,PK,LM,SS]
+gb-trace iteration=0 subcycle id=C5 vertices=[VV,VP,SV,TU]
+gb-trace iteration=0 subcycle id=C6 vertices=[YV,VI,TV,GA]
+gb-trace iteration=0 subcycle id=C7 vertices=[BD,PD,LP]
+gb-trace iteration=0 subcycle id=C8 vertices=[PT,CD,SP]
+gb-trace iteration=0 resulting id=C1 vertices=[AL,PE,YS,MA,PH,HO,GR,NL,TA,KV,LI,SE,KP,KY,EF,SI]
+gb-trace iteration=0 resulting id=C2 vertices=[KO,KE,KZ,AG,NI,PS,RT,VK,MM]
+gb-trace iteration=0 resulting id=C3 vertices=[PR,TC,KT,MJ]
+gb-trace iteration=0 resulting id=C4 vertices=[BT,VS,SM,PK,LM,SS]
+gb-trace iteration=0 resulting id=C5 vertices=[VV,VP,SV,TU]
+gb-trace iteration=0 resulting id=C6 vertices=[YV,VI,TV,GA]
+gb-trace iteration=0 resulting id=C7 vertices=[BD,PD,LP]
+gb-trace iteration=0 resulting id=C8 vertices=[PT,CD,SP]
+cut arcs by clause length (length:number) = {4: 4, 5: 2, 10: 2, 12: 2, 17: 2, 25: 2, 27: 2}
+number of added block clauses (this increment) = 16
+number of added block clauses (accumulated) = 16
+add block clauses time = 124.351us
+increment time = 620.925us
+
+CEGAR iteration...
+cegar iteration = 1
+sat solving time = 90.460us
+number of subcycles found = 8
+cycle lengths before merge (length:number) = {3: 3, 4: 1, 6: 1, 7: 1, 8: 1, 15: 1}
+merge operation: 6 + 8 = 14
+number of merge operations = 1
+number of resulting cycles = 7
+cycle lengths after merge (length:number) = {3: 3, 4: 1, 7: 1, 14: 1, 15: 1}
+gb-trace iteration=1 subcycle id=C1 vertices=[AL,PE,YS,MA,PH,HO,NL,TA,KV,LI,SE,KP,KY,EF,SI]
+gb-trace iteration=1 subcycle id=C2 vertices=[KO,KE,KZ]
+gb-trace iteration=1 subcycle id=C3 vertices=[PS,NI,AG,BD,PD,LP]
+gb-trace iteration=1 subcycle id=C4 vertices=[PR,RT,VK,MM,GR,MJ,KT,TC]
+gb-trace iteration=1 subcycle id=C5 vertices=[BT,VS,SM,PK,SS,LM,TU]
+gb-trace iteration=1 subcycle id=C6 vertices=[VV,VP,SV]
+gb-trace iteration=1 subcycle id=C7 vertices=[YV,CD,SP,PT]
+gb-trace iteration=1 subcycle id=C8 vertices=[TV,GA,VI]
+gb-trace iteration=1 merge C3 + C4 = C9
+gb-trace iteration=1 resulting id=C1 vertices=[AL,PE,YS,MA,PH,HO,NL,TA,KV,LI,SE,KP,KY,EF,SI]
+gb-trace iteration=1 resulting id=C2 vertices=[KO,KE,KZ]
+gb-trace iteration=1 resulting id=C7 vertices=[YV,CD,SP,PT]
+gb-trace iteration=1 resulting id=C8 vertices=[TV,GA,VI]
+gb-trace iteration=1 resulting id=C5 vertices=[BT,VS,SM,PK,SS,LM,TU]
+gb-trace iteration=1 resulting id=C6 vertices=[VV,VP,SV]
+gb-trace iteration=1 resulting id=C9 vertices=[PS,RT,PR,TC,KT,MJ,GR,MM,VK,NI,AG,BD,PD,LP]
+cut arcs by clause length (length:number) = {6: 4, 9: 2, 10: 2, 20: 2, 22: 2, 25: 2}
+number of added block clauses (this increment) = 14
+number of added block clauses (accumulated) = 30
+add block clauses time = 97.919us
+increment time = 188.379us
+
+CEGAR iteration...
+cegar iteration = 2
+sat solving time = 741.441us
+number of subcycles found = 3
+cycle lengths before merge (length:number) = {4: 1, 5: 1, 40: 1}
+merge operation: 40 + 5 = 45
+merge operation: 4 + 45 = 49
+number of merge operations = 2
+number of resulting cycles = 1
+cycle lengths after merge (length:number) = {49: 1}
+gb-trace iteration=2 subcycle id=C1 vertices=[AL,LI,KV,TA,NL,HO,PH,MA,PE,YS,TV,VI,GA,YV,CD,SP,PT,KE,KZ,KO,TC,KT,MJ,PR,RT,PS,LP,PD,BD,AG,NI,VK,MM,GR,VV,VP,SV,TU,BT,SM]
+gb-trace iteration=2 subcycle id=C2 vertices=[SE,KP,KY,EF,SI]
+gb-trace iteration=2 subcycle id=C3 vertices=[LM,VS,SS,PK]
+gb-trace iteration=2 merge C1 + C2 = C4
+gb-trace iteration=2 merge C3 + C4 = C5
+gb-trace iteration=2 resulting id=C5 vertices=[LM,TU,SV,VP,VV,GR,MM,VK,NI,AG,BD,PD,LP,PS,RT,PR,MJ,KT,TC,KO,KZ,KE,PT,SP,CD,YV,GA,VI,TV,YS,PE,MA,PH,HO,NL,TA,KV,LI,SE,SI,EF,KY,KP,AL,SM,BT,VS,SS,PK]
+number of added block clauses (this increment) = 0
+number of added block clauses (accumulated) = 30
+add block clauses time = 71.201us
+increment time = 812.642us
+
+hamiltonian cycle found by 2-opt
+solution: 
+LM TU SV VP VV GR MM VK NI AG BD PD LP PS RT PR MJ KT TC KO KZ KE PT SP CD YV GA VI TV YS PE MA PH HO NL TA KV LI SE SI EF KY KP AL SM BT VS SS PK
+
+s SATISFIABLE
+overall cegar iterations = 2
+overall number of added block clauses = 30
+solving time = 2.419728ms
+overall time = 2.570959ms

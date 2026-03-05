@@ -1,0 +1,42 @@
+solve benchmarks/ham-examples-col/Bbinary55.col
+file input time = 272.078us
+encoding time = 305.916us
+
+encoding clauses number = 840
+
+CEGAR iteration...
+cegar iteration = 0
+sat solving time = 56.139us
+number of subcycles found = 5
+cycle lengths before merge (length:number) = {4: 1, 5: 3, 23: 1}
+merge operation: 5 + 23 = 28
+merge operation: 4 + 5 = 9
+merge operation: 5 + 28 = 33
+merge operation: 9 + 33 = 42
+number of merge operations = 4
+number of resulting cycles = 1
+cycle lengths after merge (length:number) = {42: 1}
+gb-trace iteration=0 subcycle id=C1 vertices=[.x.x.x.x.xx,.x.x.x..xxx,.x.x..x.xxx,.x.x...xxxx,.x.x..xx.xx]
+gb-trace iteration=0 subcycle id=C2 vertices=[.x..xx.x.xx,.x..xx..xxx,.x...xx.xxx,.x..x.x.xxx,.x..x..xxxx,..x.x..xxxx,..x.x.x.xxx,..x..xx.xxx,...x.xx.xxx,....xxx.xxx,...xx.x.xxx,...xx..xxxx,....xx.xxxx,.....xxxxxx,....x.xxxxx,...x..xxxxx,...x.x.xxxx,..x..x.xxxx,..x...xxxxx,.x....xxxxx,.x...x.xxxx,.x..x.xx.xx,.x...xxx.xx]
+gb-trace iteration=0 subcycle id=C3 vertices=[..xx.x.x.xx,..xx.x..xxx,..xx..x.xxx,..xx...xxxx,..xx..xx.xx]
+gb-trace iteration=0 subcycle id=C4 vertices=[..x.xx.x.xx,..x.xx..xxx,...xxx..xxx,...xxx.x.xx]
+gb-trace iteration=0 subcycle id=C5 vertices=[..x.x.xx.xx,..x..xxx.xx,...x.xxx.xx,....xxxx.xx,...xx.xx.xx]
+gb-trace iteration=0 merge C1 + C2 = C6
+gb-trace iteration=0 merge C4 + C5 = C7
+gb-trace iteration=0 merge C3 + C6 = C8
+gb-trace iteration=0 merge C7 + C8 = C9
+gb-trace iteration=0 resulting id=C9 vertices=[..x.xx.x.xx,..x.xx..xxx,...x.xx.xxx,..x..xx.xxx,..x.x.x.xxx,..x.x..xxxx,.x..x..xxxx,.x..x.x.xxx,.x...xx.xxx,.x..xx..xxx,.x.x.x..xxx,..xx.x..xxx,..xx.x.x.xx,..xx..xx.xx,..xx...xxxx,..xx..x.xxx,.x.x..x.xxx,.x.x...xxxx,.x.x..xx.xx,.x.x.x.x.xx,.x..xx.x.xx,.x...xxx.xx,.x..x.xx.xx,.x...x.xxxx,.x....xxxxx,..x...xxxxx,..x..x.xxxx,...x.x.xxxx,...x..xxxxx,....x.xxxxx,.....xxxxxx,....xx.xxxx,...xx..xxxx,...xx.x.xxx,....xxx.xxx,...xxx..xxx,...xxx.x.xx,....xxxx.xx,...xx.xx.xx,..x.x.xx.xx,..x..xxx.xx,...x.xxx.xx]
+number of added block clauses (this increment) = 0
+number of added block clauses (accumulated) = 0
+add block clauses time = 141.087us
+increment time = 197.226us
+
+hamiltonian cycle found by 2-opt
+solution: 
+..x.xx.x.xx ..x.xx..xxx ...x.xx.xxx ..x..xx.xxx ..x.x.x.xxx ..x.x..xxxx .x..x..xxxx .x..x.x.xxx .x...xx.xxx .x..xx..xxx .x.x.x..xxx ..xx.x..xxx ..xx.x.x.xx ..xx..xx.xx ..xx...xxxx ..xx..x.xxx .x.x..x.xxx .x.x...xxxx .x.x..xx.xx .x.x.x.x.xx .x..xx.x.xx .x...xxx.xx .x..x.xx.xx .x...x.xxxx .x....xxxxx ..x...xxxxx ..x..x.xxxx ...x.x.xxxx ...x..xxxxx ....x.xxxxx .....xxxxxx ....xx.xxxx ...xx..xxxx ...xx.x.xxx ....xxx.xxx ...xxx..xxx ...xxx.x.xx ....xxxx.xx ...xx.xx.xx ..x.x.xx.xx ..x..xxx.xx ...x.xxx.xx
+
+s SATISFIABLE
+overall cegar iterations = 0
+overall number of added block clauses = 0
+solving time = 1.203210ms
+overall time = 1.477187ms

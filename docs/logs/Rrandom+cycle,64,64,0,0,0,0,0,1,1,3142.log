@@ -1,0 +1,36 @@
+solve benchmarks/ham-examples-col/Rrandom+cycle,64,64,0,0,0,0,0,1,1,3142.col
+file input time = 118.120us
+encoding time = 183.630us
+
+encoding clauses number = 1241
+
+CEGAR iteration...
+cegar iteration = 0
+sat solving time = 98.635us
+number of subcycles found = 3
+cycle lengths before merge (length:number) = {17: 1, 21: 1, 26: 1}
+merge operation: 17 + 21 = 38
+merge operation: 26 + 38 = 64
+number of merge operations = 2
+number of resulting cycles = 1
+cycle lengths after merge (length:number) = {64: 1}
+gb-trace iteration=0 subcycle id=C1 vertices=[0,63,62,61,17,18,19,20,59,58,6,10,50,3,4,5,1]
+gb-trace iteration=0 subcycle id=C2 vertices=[2,57,37,36,35,34,33,32,31,38,39,40,41,42,43,14,13,12,11,60,48]
+gb-trace iteration=0 subcycle id=C3 vertices=[7,30,29,8,9,51,15,16,28,27,26,25,24,23,49,47,46,45,44,22,21,56,55,54,53,52]
+gb-trace iteration=0 merge C1 + C2 = C4
+gb-trace iteration=0 merge C3 + C4 = C5
+gb-trace iteration=0 resulting id=C5 vertices=[7,30,29,8,9,10,6,58,59,20,19,18,17,61,62,63,0,1,2,48,60,11,12,13,14,43,42,41,40,39,38,31,32,33,34,35,36,37,57,5,4,3,50,51,15,16,28,27,26,25,24,23,49,47,46,45,44,22,21,56,55,54,53,52]
+number of added block clauses (this increment) = 0
+number of added block clauses (accumulated) = 0
+add block clauses time = 86.594us
+increment time = 185.229us
+
+hamiltonian cycle found by 2-opt
+solution: 
+7 30 29 8 9 10 6 58 59 20 19 18 17 61 62 63 0 1 2 48 60 11 12 13 14 43 42 41 40 39 38 31 32 33 34 35 36 37 57 5 4 3 50 51 15 16 28 27 26 25 24 23 49 47 46 45 44 22 21 56 55 54 53 52
+
+s SATISFIABLE
+overall cegar iterations = 0
+overall number of added block clauses = 0
+solving time = 887.703us
+overall time = 1.006730ms

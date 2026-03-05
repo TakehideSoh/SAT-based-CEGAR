@@ -1,0 +1,51 @@
+solve benchmarks/ham-examples-col/Q5cube.col
+file input time = 155.142us
+encoding time = 195.348us
+
+encoding clauses number = 848
+
+CEGAR iteration...
+cegar iteration = 0
+sat solving time = 36.300us
+number of subcycles found = 8
+cycle lengths before merge (length:number) = {4: 8}
+merge operation: 4 + 4 = 8
+merge operation: 4 + 4 = 8
+merge operation: 4 + 8 = 12
+merge operation: 4 + 8 = 12
+merge operation: 4 + 12 = 16
+merge operation: 4 + 12 = 16
+merge operation: 16 + 16 = 32
+number of merge operations = 7
+number of resulting cycles = 1
+cycle lengths after merge (length:number) = {32: 1}
+gb-trace iteration=0 subcycle id=C1 vertices=[0.0.0.0.0,0.0.0.0.1,0.0.0.1.1,0.0.0.1.0]
+gb-trace iteration=0 subcycle id=C2 vertices=[0.0.1.0.0,0.0.1.0.1,0.0.1.1.1,0.0.1.1.0]
+gb-trace iteration=0 subcycle id=C3 vertices=[0.1.0.0.0,0.1.0.0.1,0.1.0.1.1,0.1.0.1.0]
+gb-trace iteration=0 subcycle id=C4 vertices=[0.1.1.0.0,0.1.1.0.1,0.1.1.1.1,0.1.1.1.0]
+gb-trace iteration=0 subcycle id=C5 vertices=[1.0.0.0.0,1.0.0.0.1,1.0.0.1.1,1.0.0.1.0]
+gb-trace iteration=0 subcycle id=C6 vertices=[1.0.1.0.0,1.0.1.0.1,1.0.1.1.1,1.0.1.1.0]
+gb-trace iteration=0 subcycle id=C7 vertices=[1.1.0.0.0,1.1.0.0.1,1.1.0.1.1,1.1.0.1.0]
+gb-trace iteration=0 subcycle id=C8 vertices=[1.1.1.0.0,1.1.1.0.1,1.1.1.1.1,1.1.1.1.0]
+gb-trace iteration=0 merge C1 + C2 = C9
+gb-trace iteration=0 merge C7 + C8 = C10
+gb-trace iteration=0 merge C6 + C9 = C11
+gb-trace iteration=0 merge C5 + C10 = C12
+gb-trace iteration=0 merge C4 + C11 = C13
+gb-trace iteration=0 merge C3 + C12 = C14
+gb-trace iteration=0 merge C13 + C14 = C15
+gb-trace iteration=0 resulting id=C15 vertices=[0.1.1.0.0,0.1.0.0.0,0.1.0.1.0,1.1.0.1.0,1.1.0.0.0,1.1.1.0.0,1.1.1.1.0,1.1.1.1.1,1.1.1.0.1,1.1.0.0.1,1.0.0.0.1,1.0.0.0.0,1.0.0.1.0,1.0.0.1.1,1.1.0.1.1,0.1.0.1.1,0.1.0.0.1,0.1.1.0.1,0.1.1.1.1,0.0.1.1.1,1.0.1.1.1,1.0.1.1.0,1.0.1.0.0,1.0.1.0.1,0.0.1.0.1,0.0.0.0.1,0.0.0.1.1,0.0.0.1.0,0.0.0.0.0,0.0.1.0.0,0.0.1.1.0,0.1.1.1.0]
+number of added block clauses (this increment) = 0
+number of added block clauses (accumulated) = 0
+add block clauses time = 103.898us
+increment time = 140.198us
+
+hamiltonian cycle found by 2-opt
+solution: 
+0.1.1.0.0 0.1.0.0.0 0.1.0.1.0 1.1.0.1.0 1.1.0.0.0 1.1.1.0.0 1.1.1.1.0 1.1.1.1.1 1.1.1.0.1 1.1.0.0.1 1.0.0.0.1 1.0.0.0.0 1.0.0.1.0 1.0.0.1.1 1.1.0.1.1 0.1.0.1.1 0.1.0.0.1 0.1.1.0.1 0.1.1.1.1 0.0.1.1.1 1.0.1.1.1 1.0.1.1.0 1.0.1.0.0 1.0.1.0.1 0.0.1.0.1 0.0.0.0.1 0.0.0.1.1 0.0.0.1.0 0.0.0.0.0 0.0.1.0.0 0.0.1.1.0 0.1.1.1.0
+
+s SATISFIABLE
+overall cegar iterations = 0
+overall number of added block clauses = 0
+solving time = 690.531us
+overall time = 846.547us
