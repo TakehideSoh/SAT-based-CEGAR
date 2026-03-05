@@ -46,6 +46,7 @@ const els = {
   cycleViewGroup: document.getElementById("cycle-view-group"),
   stepSlider: document.getElementById("step-slider"),
   stepLabel: document.getElementById("step-label"),
+  stepReset: document.getElementById("step-reset"),
   stepPrev: document.getElementById("step-prev"),
   stepNext: document.getElementById("step-next"),
   playToggle: document.getElementById("play-toggle"),
@@ -108,6 +109,20 @@ function edgeKey(a, b) {
   return x < y ? `${x}|${y}` : `${y}|${x}`;
 }
 
+function edgeLabel(edge) {
+  if (!Array.isArray(edge) || edge.length < 2) {
+    return "?-?";
+  }
+  return `${String(edge[0])}-${String(edge[1])}`;
+}
+
+function edgeListLabel(edges) {
+  if (!Array.isArray(edges) || edges.length === 0) {
+    return "";
+  }
+  return edges.map((edge) => edgeLabel(edge)).join(", ");
+}
+
 function hashString(s) {
   let h = 2166136261;
   for (let i = 0; i < s.length; i += 1) {
@@ -145,6 +160,20 @@ function setActiveByData(groupEl, dataName, value) {
     const btn = buttons[i];
     btn.classList.toggle("active", btn.dataset[dataName] === value);
   }
+}
+
+function isEditableTarget(target) {
+  if (!(target instanceof Element)) {
+    return false;
+  }
+  const tag = target.tagName;
+  if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") {
+    return true;
+  }
+  if (target.getAttribute("contenteditable") === "true") {
+    return true;
+  }
+  return target.closest("[contenteditable='true']") !== null;
 }
 
 function applyControlButtonState() {
@@ -223,9 +252,64 @@ function togglePlayback() {
   }
 }
 
-function renderProblemList() {
+function togglePlaybackFromKeyboard() {
+  if (state.isPlaying) {
+    stopPlayback();
+    return;
+  }
+  if (!state.replayFrames.length) {
+    return;
+  }
+  const idx = Number(els.stepSlider.value);
+  if (idx >= state.replayFrames.length - 1) {
+    els.stepSlider.value = "0";
+    updateStepLabel(state.replayFrames[0], true);
+    state.selectedCycle = null;
+    renderGraphReplay();
+  }
+  startPlayback();
+}
+
+function stepIndexForIterationStart(iterIndex) {
+  for (let i = 0; i < state.replayFrames.length; i += 1) {
+    const frame = state.replayFrames[i];
+    if (
+      frame &&
+      frame.iterIndex === iterIndex &&
+      frame.kind === "iteration" &&
+      frame.stage === "subcycles"
+    ) {
+      return i;
+    }
+  }
+  for (let i = 0; i < state.replayFrames.length; i += 1) {
+    const frame = state.replayFrames[i];
+    if (frame && frame.iterIndex === iterIndex) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+function jumpToIterationStart(iterIndex, scrollLogs) {
+  if (!state.replayFrames.length) {
+    return;
+  }
+  const idx = stepIndexForIterationStart(iterIndex);
+  const next = idx >= 0 ? idx : 0;
+  els.stepSlider.value = String(next);
+  updateStepLabel(state.replayFrames[next], Boolean(scrollLogs));
+  state.selectedCycle = null;
+  renderGraphReplay();
+}
+
+function getFilteredFiles() {
   const query = els.searchInput.value.trim().toLowerCase();
-  const files = state.files.filter((file) => file.toLowerCase().includes(query));
+  return state.files.filter((file) => file.toLowerCase().includes(query));
+}
+
+function renderProblemList() {
+  const files = getFilteredFiles();
 
   if (files.length === 0) {
     els.problemList.innerHTML = '<p class="empty-note">No matching log files.</p>';
@@ -262,6 +346,39 @@ function sortFilesByVertexThenName() {
     }
     return a.localeCompare(b);
   });
+}
+
+async function selectAdjacentProblem(delta) {
+  const files = getFilteredFiles();
+  if (!files.length) {
+    return;
+  }
+  const current = state.activeFile;
+  let idx = files.indexOf(current);
+  if (idx < 0) {
+    idx = 0;
+  }
+  let next = idx + delta;
+  if (next < 0) {
+    next = 0;
+  }
+  if (next >= files.length) {
+    next = files.length - 1;
+  }
+  const file = files[next];
+  if (!file || file === current) {
+    return;
+  }
+  try {
+    await selectFile(file);
+  } catch (err) {
+    els.mainTitle.textContent = file;
+    els.summary.innerHTML = "";
+    els.iterations.innerHTML = `<p class="empty-note">${escapeHtml(
+      err && err.message ? err.message : String(err),
+    )}</p>`;
+    refreshReplayFrames(false);
+  }
 }
 
 function renderSummary(parsed) {
@@ -829,7 +946,18 @@ function inferMergedCycleOrder(leftCycle, rightCycle, graph) {
         const rightPath = pathExcludingDirectedEdge(R, t, k);
         const merged = leftPath.concat(rightPath);
         if (merged.length === L.length + R.length) {
-          return merged;
+          return {
+            order: merged,
+            usedEdges: [
+              [a, c],
+              [b, d],
+            ],
+            cutEdges: [
+              [a, b],
+              [c, d],
+            ],
+            pattern: 1,
+          };
         }
       }
 
@@ -838,7 +966,18 @@ function inferMergedCycleOrder(leftCycle, rightCycle, graph) {
         const rightPath = pathExcludingDirectedEdge(R, k, t);
         const merged = leftPath.concat(rightPath);
         if (merged.length === L.length + R.length) {
-          return merged;
+          return {
+            order: merged,
+            usedEdges: [
+              [a, d],
+              [b, c],
+            ],
+            cutEdges: [
+              [a, b],
+              [c, d],
+            ],
+            pattern: 2,
+          };
         }
       }
     }
@@ -918,7 +1057,8 @@ function buildReplayFrames(parsed, mode, graph) {
       const op = iter.gb.merges[j];
       const left = cycleMap.get(op.left);
       const right = cycleMap.get(op.right);
-      const inferredOrder = inferMergedCycleOrder(left, right, graph);
+      const inferred = inferMergedCycleOrder(left, right, graph);
+      const inferredOrder = inferred && Array.isArray(inferred.order) ? inferred.order : null;
       const mergedVertices =
         inferredOrder ||
         mergeCycleVertices(left ? left.vertices : [], right ? right.vertices : []);
@@ -941,6 +1081,9 @@ function buildReplayFrames(parsed, mode, graph) {
           left: op.left,
           right: op.right,
           merged: op.merged,
+          usedEdges: inferred && Array.isArray(inferred.usedEdges) ? inferred.usedEdges.slice() : [],
+          cutEdges: inferred && Array.isArray(inferred.cutEdges) ? inferred.cutEdges.slice() : [],
+          inferred: Boolean(inferredOrder),
         },
         cycles: snapshotCycleMap(cycleMap),
       });
@@ -1021,7 +1164,19 @@ function renderLegend(frame, cycleInfos) {
     frame && frame.merge
       ? `<span class="legend-item">merge: ${escapeHtml(
           `${frame.merge.left} + ${frame.merge.right} -> ${frame.merge.merged}`,
-        )}</span>`
+        )}</span>${
+          frame.merge.usedEdges && frame.merge.usedEdges.length
+            ? `<span class="legend-item">used edges: ${escapeHtml(
+                edgeListLabel(frame.merge.usedEdges),
+              )}</span>`
+            : ""
+        }${
+          frame.merge.cutEdges && frame.merge.cutEdges.length
+            ? `<span class="legend-item">removed edges: ${escapeHtml(
+                edgeListLabel(frame.merge.cutEdges),
+              )}</span>`
+            : ""
+        }`
       : "";
 
   const cycles = cycleInfos
@@ -1155,6 +1310,60 @@ function drawGraphModeFrame(ctx, width, height, graph, frame, cycleInfos) {
       ctx.stroke();
     }
     ctx.restore();
+  }
+
+  if (frame && frame.kind === "merge" && frame.merge) {
+    const cut = Array.isArray(frame.merge.cutEdges) ? frame.merge.cutEdges : [];
+    if (cut.length > 0) {
+      ctx.save();
+      ctx.setLineDash([5, 8]);
+      ctx.strokeStyle = "#d17b79";
+      ctx.lineWidth = 2.6;
+      ctx.globalAlpha = 0.58;
+      for (let i = 0; i < cut.length; i += 1) {
+        const e = cut[i];
+        const aId = String(e[0]);
+        const bId = String(e[1]);
+        const p1 = posById[aId];
+        const p2 = posById[bId];
+        if (!p1 || !p2) {
+          continue;
+        }
+        const a = toPx(p1);
+        const b = toPx(p2);
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    const used = Array.isArray(frame.merge.usedEdges) ? frame.merge.usedEdges : [];
+    if (used.length > 0) {
+      ctx.save();
+      ctx.setLineDash([11, 6]);
+      ctx.strokeStyle = "#cb4b16";
+      ctx.lineWidth = 4.2;
+      ctx.globalAlpha = 0.82;
+      for (let i = 0; i < used.length; i += 1) {
+        const e = used[i];
+        const aId = String(e[0]);
+        const bId = String(e[1]);
+        const p1 = posById[aId];
+        const p2 = posById[bId];
+        if (!p1 || !p2) {
+          continue;
+        }
+        const a = toPx(p1);
+        const b = toPx(p2);
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
   }
 
   const showAllLabels = graph.nodes.length <= 34;
@@ -1303,7 +1512,15 @@ function drawActionOverlay(ctx, width, frame) {
   let sub = "";
   if (frame.kind === "merge" && frame.merge) {
     title = `Merge`;
-    sub = `iter ${frame.iterIndex}: ${frame.merge.left} + ${frame.merge.right} -> ${frame.merge.merged}`;
+    const usedText =
+      frame.merge.usedEdges && frame.merge.usedEdges.length
+        ? ` | use ${edgeListLabel(frame.merge.usedEdges)}`
+        : "";
+    const cutText =
+      frame.merge.cutEdges && frame.merge.cutEdges.length
+        ? ` | cut ${edgeListLabel(frame.merge.cutEdges)}`
+        : "";
+    sub = `iter ${frame.iterIndex}: ${frame.merge.left} + ${frame.merge.right} -> ${frame.merge.merged}${usedText}${cutText}`;
   } else if (frame.kind === "iteration" && frame.stage === "subcycles") {
     title = `Iteration ${frame.iterIndex}`;
     sub = "subcycles";
@@ -1348,6 +1565,40 @@ function drawActionOverlay(ctx, width, frame) {
     ctx.fillStyle = "#657b83";
     ctx.fillText(sub, x + 12, y + 48);
   }
+
+  const hintGap = 12;
+  const rightAvail = width - (x + w + hintGap) - 18;
+  const placeRight = rightAvail >= 240;
+  let hintW = placeRight ? Math.min(380, rightAvail) : Math.min(380, width - 36);
+  hintW = Math.max(190, hintW);
+  let hintX = placeRight ? x + w + hintGap : x;
+  let hintY = placeRight ? y : y + h + 8;
+  const hintH = 92;
+  ctx.fillStyle = "rgba(253, 246, 227, 0.82)";
+  ctx.strokeStyle = "rgba(101, 123, 131, 0.22)";
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(hintX + r, hintY);
+  ctx.lineTo(hintX + hintW - r, hintY);
+  ctx.quadraticCurveTo(hintX + hintW, hintY, hintX + hintW, hintY + r);
+  ctx.lineTo(hintX + hintW, hintY + hintH - r);
+  ctx.quadraticCurveTo(hintX + hintW, hintY + hintH, hintX + hintW - r, hintY + hintH);
+  ctx.lineTo(hintX + r, hintY + hintH);
+  ctx.quadraticCurveTo(hintX, hintY + hintH, hintX, hintY + hintH - r);
+  ctx.lineTo(hintX, hintY + r);
+  ctx.quadraticCurveTo(hintX, hintY, hintX + r, hintY);
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.fillStyle = "#586e75";
+  ctx.font = "bold 12px 'Avenir Next', 'Trebuchet MS', sans-serif";
+  ctx.fillText("Keyboard", hintX + 10, hintY + 18);
+  ctx.fillStyle = "#657b83";
+  ctx.font = "11px 'Courier New', monospace";
+  ctx.fillText("← Prev   → Next", hintX + 10, hintY + 34);
+  ctx.fillText("↑/↓ Problems", hintX + 10, hintY + 50);
+  ctx.fillText("Home Iteration 0 start", hintX + 10, hintY + 66);
+  ctx.fillText("Space Replay/Pause", hintX + 10, hintY + 82);
   ctx.restore();
 }
 
@@ -1356,7 +1607,15 @@ function buildFrameActionText(frame) {
     return "Frame: -";
   }
   if (frame.kind === "merge" && frame.merge) {
-    return `Frame: Merge (iter ${frame.iterIndex}) ${frame.merge.left} + ${frame.merge.right} -> ${frame.merge.merged}`;
+    const usedText =
+      frame.merge.usedEdges && frame.merge.usedEdges.length
+        ? ` [use ${edgeListLabel(frame.merge.usedEdges)}]`
+        : "";
+    const cutText =
+      frame.merge.cutEdges && frame.merge.cutEdges.length
+        ? ` [cut ${edgeListLabel(frame.merge.cutEdges)}]`
+        : "";
+    return `Frame: Merge (iter ${frame.iterIndex}) ${frame.merge.left} + ${frame.merge.right} -> ${frame.merge.merged}${usedText}${cutText}`;
   }
   if (frame.kind === "iteration" && frame.iterIndex !== null && frame.iterIndex !== undefined) {
     return `Frame: Iteration ${frame.iterIndex}`;
@@ -1695,6 +1954,11 @@ function attachListeners() {
     renderGraphReplay();
   });
 
+  els.stepReset.addEventListener("click", () => {
+    stopPlayback();
+    jumpToIterationStart(0, true);
+  });
+
   els.stepPrev.addEventListener("click", () => {
     stopPlayback();
     advanceStep(-1, true);
@@ -1775,6 +2039,52 @@ function attachListeners() {
 
   window.addEventListener("resize", () => {
     renderGraphReplay();
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (event.defaultPrevented) {
+      return;
+    }
+    if (isEditableTarget(event.target)) {
+      return;
+    }
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      stopPlayback();
+      void selectAdjacentProblem(-1);
+      return;
+    }
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      stopPlayback();
+      void selectAdjacentProblem(1);
+      return;
+    }
+    if (!state.replayFrames.length) {
+      return;
+    }
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      stopPlayback();
+      advanceStep(-1, true);
+      return;
+    }
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      stopPlayback();
+      advanceStep(1, true);
+      return;
+    }
+    if (event.key === "Home") {
+      event.preventDefault();
+      stopPlayback();
+      jumpToIterationStart(0, true);
+      return;
+    }
+    if (event.key === " " || event.code === "Space") {
+      event.preventDefault();
+      togglePlaybackFromKeyboard();
+    }
   });
 }
 
