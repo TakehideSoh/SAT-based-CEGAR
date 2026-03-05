@@ -348,6 +348,21 @@ function sortFilesByVertexThenName() {
   });
 }
 
+function pickDefaultProblemFile(files) {
+  if (!Array.isArray(files) || files.length === 0) {
+    return null;
+  }
+  const exact = files.find((f) => getStem(f) === "Wgrinberg,1,2");
+  if (exact) {
+    return exact;
+  }
+  const grinberg = files.find((f) => /grinberg/i.test(getStem(f)));
+  if (grinberg) {
+    return grinberg;
+  }
+  return files[0];
+}
+
 async function selectAdjacentProblem(delta) {
   const files = getFilteredFiles();
   if (!files.length) {
@@ -1852,7 +1867,8 @@ async function loadManifest() {
     renderProblemList();
 
     if (state.files.length > 0) {
-      await selectFile(state.files[0]);
+      const initialFile = pickDefaultProblemFile(state.files);
+      await selectFile(initialFile || state.files[0]);
       warmStatus(state.files);
     } else {
       els.problemList.innerHTML = '<p class="empty-note">No log files found in manifest.</p>';
