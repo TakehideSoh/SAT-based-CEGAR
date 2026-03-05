@@ -3,6 +3,7 @@ import argparse
 import csv
 import json
 import math
+import re
 from pathlib import Path
 
 import networkx as nx
@@ -212,6 +213,21 @@ def _tutte_with_outer_cycle(g, outer_cycle, max_iter=5000, tol=1e-9):
 
 def _choose_layout(g, embedding, stem):
     stem_lc = stem.lower()
+    node_ids = [str(v) for v in g.nodes()]
+    if stem == "Cconcentric-36":
+        pos = _concentric_four_ring_layout(node_ids)
+        if pos is not None:
+            return pos, "concentric-4ring-fixed"
+    if stem == "Pgrid+corners8x10":
+        pos = _grid_corners_layout(node_ids)
+        if pos is not None:
+            return pos, "grid+corners-fixed"
+    if stem_lc.startswith("hhalin-pi"):
+        faces = _embedding_faces(embedding)
+        if faces:
+            outer = max(faces, key=len)
+            tutte = _tutte_with_outer_cycle(g, outer)
+            return tutte, "tutte(outer=max-face)"
     if "grinberg" in stem_lc:
         faces = _embedding_faces(embedding)
         if faces:
@@ -219,6 +235,209 @@ def _choose_layout(g, embedding, stem):
             tutte = _tutte_with_outer_cycle(g, outer)
             return tutte, "tutte(outer=max-face)"
     return nx.planar_layout(embedding), "planar_layout"
+
+
+def _concentric_four_ring_layout(node_ids):
+    groups = {}
+    for node in node_ids:
+        m = re.match(r"^([a-zA-Z]+)(\d+)$", str(node))
+        if not m:
+            return None
+        key = m.group(1)
+        idx = int(m.group(2))
+        groups.setdefault(key, []).append((idx, str(node)))
+    if set(groups.keys()) != {"a", "b", "c", "d"}:
+        return None
+    counts = {k: len(v) for k, v in groups.items()}
+    if len(set(counts.values())) != 1:
+        return None
+    n = next(iter(counts.values()))
+    if n < 3:
+        return None
+    radii = {"a": 1.0, "b": 0.76, "c": 0.52, "d": 0.28}
+    pos = {}
+    for layer in ["a", "b", "c", "d"]:
+        for idx, node in groups[layer]:
+            theta = (-math.pi / 2.0) + (2.0 * math.pi * (idx % n) / n)
+            r = radii[layer]
+            pos[node] = (r * math.cos(theta), r * math.sin(theta))
+    return pos
+
+
+def _grid_corners_layout(node_ids):
+    numeric = {}
+    max_r = 0
+    max_c = 0
+    for node in node_ids:
+        s = str(node)
+        m = re.match(r"^(\d+)\.(\d+)$", s)
+        if not m:
+            continue
+        r = int(m.group(1))
+        c = int(m.group(2))
+        numeric[s] = (c, r)
+        max_r = max(max_r, r)
+        max_c = max(max_c, c)
+    if len(numeric) < 20:
+        return None
+    pos = dict(numeric)
+    if "!" in node_ids:
+        pos["!"] = (-0.9, -0.9)
+    if "!!" in node_ids:
+        pos["!!"] = (max_c + 0.9, max_r + 0.9)
+    for node in node_ids:
+        s = str(node)
+        if s not in pos:
+            pos[s] = (max_c + 1.5, max_r + 1.5)
+    return pos
+
+
+def _q5cube_projection_layout(node_ids):
+    vecs = [
+        (1.0, 0.0),
+        (0.30901699437494745, 0.9510565162951535),
+        (-0.8090169943749473, 0.5877852522924732),
+        (-0.8090169943749476, -0.587785252292473),
+        (0.30901699437494723, -0.9510565162951536),
+    ]
+    pos = {}
+    for node in node_ids:
+        s = str(node)
+        parts = s.split(".")
+        if len(parts) != 5 or any(p not in {"0", "1"} for p in parts):
+            return None
+        bits = [int(p) for p in parts]
+        x = 0.0
+        y = 0.0
+        for i, bit in enumerate(bits):
+            t = bit - 0.5
+            x += t * vecs[i][0]
+            y += t * vecs[i][1]
+        # small tie-breaker to keep all vertices separated deterministically
+        lex = int("".join(parts), 2)
+        x += (lex % 4) * 0.012
+        y += ((lex // 4) % 4) * 0.012
+        pos[s] = (x, y)
+    return pos
+
+
+def _tripartite_xyz_layout(node_ids):
+    groups = {"x": [], "y": [], "z": []}
+    for node in node_ids:
+        s = str(node)
+        m = re.match(r"^([xyzXYZ])(\d+)$", s)
+        if not m:
+            return None
+        key = m.group(1).lower()
+        groups[key].append((int(m.group(2)), s))
+    if min(len(groups["x"]), len(groups["y"]), len(groups["z"])) == 0:
+        return None
+    xpos = {"x": 0.0, "y": 1.4, "z": 2.8}
+    pos = {}
+    for key in ["x", "y", "z"]:
+        arr = sorted(groups[key])
+        n = len(arr)
+        if n == 1:
+            pos[arr[0][1]] = (xpos[key], 0.0)
+            continue
+        for i, (_, node) in enumerate(arr):
+            y = -1.0 + 2.0 * i / (n - 1)
+            pos[node] = (xpos[key], y)
+    return pos
+
+
+def _bbinary_spectral_layout(g, node_ids):
+    if g.number_of_nodes() == 0:
+        return None
+    for node in node_ids:
+        s = str(node)
+        if len(s) != 11 or any(ch not in {".", "x"} for ch in s):
+            return None
+    pos = nx.spectral_layout(g, dim=2)
+    out = {}
+    for node, vec in pos.items():
+        out[str(node)] = (float(vec[0]), float(vec[1]))
+    return out
+
+
+def _choose_nonplanar_layout(g, stem):
+    node_ids = [str(v) for v in g.nodes()]
+    if stem == "Q5cube":
+        pos = _q5cube_projection_layout(node_ids)
+        if pos is not None:
+            return pos, "q5cube-5d-projection"
+    if stem == "TtripartiteK456":
+        pos = _tripartite_xyz_layout(node_ids)
+        if pos is not None:
+            return pos, "tripartite-3column"
+    if stem == "Bbinary55":
+        pos = _bbinary_spectral_layout(g, node_ids)
+        if pos is not None:
+            return pos, "bbinary-spectral"
+    return None, None
+
+
+def _us_contig_fixed_layout(stem, node_ids):
+    if stem != "Ucontig-ME-to-all":
+        return None
+    # Hand-tuned contiguous-US style placement (rough geographic layout).
+    fixed = {
+        "WA": (0.8, 1.0),
+        "OR": (0.8, 2.0),
+        "CA": (0.9, 4.0),
+        "ID": (1.8, 1.6),
+        "NV": (1.8, 3.0),
+        "UT": (2.5, 3.0),
+        "AZ": (2.5, 4.3),
+        "MT": (2.8, 1.1),
+        "WY": (2.8, 2.2),
+        "CO": (3.4, 3.1),
+        "NM": (3.4, 4.2),
+        "ND": (4.0, 1.1),
+        "SD": (4.0, 2.1),
+        "NE": (4.1, 3.0),
+        "KS": (4.1, 3.9),
+        "OK": (4.2, 4.9),
+        "TX": (4.5, 6.0),
+        "MN": (5.0, 1.6),
+        "IA": (5.1, 2.8),
+        "MO": (5.3, 3.9),
+        "AR": (5.4, 4.9),
+        "LA": (5.7, 6.2),
+        "WI": (5.8, 2.0),
+        "IL": (5.9, 3.1),
+        "MS": (6.3, 5.9),
+        "MI": (6.7, 1.9),
+        "IN": (6.5, 3.0),
+        "KY": (6.7, 3.8),
+        "TN": (6.8, 4.7),
+        "AL": (7.1, 5.8),
+        "OH": (7.3, 3.1),
+        "WV": (7.8, 3.9),
+        "GA": (7.8, 5.7),
+        "SC": (8.3, 5.3),
+        "NC": (8.4, 4.8),
+        "VA": (8.3, 4.3),
+        "PA": (8.0, 3.2),
+        "FL": (8.3, 6.9),
+        "NY": (8.6, 2.5),
+        "VT": (9.1, 2.1),
+        "NH": (9.4, 2.1),
+        "ME": (9.9, 1.8),
+        "MA": (9.1, 2.6),
+        "CT": (8.9, 2.9),
+        "RI": (9.3, 2.8),
+        "NJ": (8.5, 3.3),
+        "DE": (8.5, 3.7),
+        "MD": (8.2, 3.8),
+        # Auxiliary vertices used by this GraphBase instance.
+        "!": (0.2, 6.6),
+        "!!": (0.9, 7.2),
+    }
+    ids = {str(v) for v in node_ids}
+    if not ids.issubset(set(fixed.keys())):
+        return None
+    return {v: fixed[v] for v in ids}
 
 
 def convert_dir(src_dir: Path, dst_dir: Path):
@@ -232,17 +451,27 @@ def convert_dir(src_dir: Path, dst_dir: Path):
             g.add_node(node["id"])
         for u, v in edges:
             g.add_edge(u, v)
-        is_planar, embedding = nx.check_planarity(g, counterexample=False)
-
         layouts = {}
         layout_method = "none"
-        if is_planar:
-            planar_pos, layout_method = _choose_layout(g, embedding, gb.stem)
-            layouts["planar"] = _positions_to_jsonable(planar_pos)
+        fixed_pos = _us_contig_fixed_layout(gb.stem, [n["id"] for n in nodes])
+        if fixed_pos is not None:
+            layouts["spring"] = _positions_to_jsonable(fixed_pos)
+            layout_method = "us-contiguous-fixed"
+            is_planar, _ = nx.check_planarity(g, counterexample=False)
         else:
-            spring_pos = nx.spring_layout(g, seed=42)
-            layouts["spring"] = _positions_to_jsonable(spring_pos)
-            layout_method = "spring_layout(seed=42)"
+            is_planar, embedding = nx.check_planarity(g, counterexample=False)
+            if is_planar:
+                planar_pos, layout_method = _choose_layout(g, embedding, gb.stem)
+                layouts["planar"] = _positions_to_jsonable(planar_pos)
+            else:
+                special_pos, special_method = _choose_nonplanar_layout(g, gb.stem)
+                if special_pos is not None:
+                    layouts["spring"] = _positions_to_jsonable(special_pos)
+                    layout_method = special_method
+                else:
+                    spring_pos = nx.spring_layout(g, seed=42)
+                    layouts["spring"] = _positions_to_jsonable(spring_pos)
+                    layout_method = "spring_layout(seed=42)"
 
         out = dst_dir / f"{gb.stem}.json"
         payload = {
