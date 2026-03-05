@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CEGAR GB Trace Visualizer</title>
+    <title>SAT-Based CEGAR Visualizer for HCP</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <header class="topbar">
       <div>
-        <h1>CEGAR GB Trace Visualizer</h1>
+        <h1>SAT-Based CEGAR Visualizer for HCP</h1>
         <p>ham-examples Rust logs with subcycle IDs and merge traces</p>
       </div>
     </header>
@@ -53,10 +53,10 @@
           </div>
 
           <div class="ctrl-block">
-            <div class="ctrl-title">Cycle View</div>
+            <div class="ctrl-title">Trace Mode</div>
             <div class="ctrl-group" id="cycle-view-group">
-              <button type="button" data-cycle-view="subcycles">Subcycles only</button>
-              <button type="button" data-cycle-view="merge" class="active">with Merge</button>
+              <button type="button" data-cycle-view="subcycles">Subcycles</button>
+              <button type="button" data-cycle-view="merge" class="active">Merge Steps</button>
             </div>
           </div>
 
