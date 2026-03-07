@@ -1,0 +1,34 @@
+name: c_ipasir build test
+
+on:
+  push:
+    paths:
+      - 'c_ipasir.tar.gz'
+      - 'c_ipasir/**'
+      - '.github/workflows/c_ipasir.yml'
+  pull_request:
+    paths:
+      - 'c_ipasir.tar.gz'
+      - 'c_ipasir/**'
+      - '.github/workflows/c_ipasir.yml'
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract tarball
+        run: tar xzf c_ipasir.tar.gz
+
+      - name: Build solver
+        run: ./c_ipasir/build.sh
+
+      - name: Smoke test
+        run: |
+          echo "solver binary:"
+          file c_ipasir/solver
+          ./c_ipasir/solver --help || true
