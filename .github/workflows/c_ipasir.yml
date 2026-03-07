@@ -11,12 +11,17 @@ on:
       - 'c_ipasir.tar.gz'
       - 'c_ipasir/**'
       - '.github/workflows/c_ipasir.yml'
+  workflow_dispatch:
 
 jobs:
   build:
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest]
+        include:
+          - os: macos-latest
+            name: macos-arm64
+          - os: ubuntu-latest
+            name: linux-x86_64
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -32,3 +37,9 @@ jobs:
           echo "solver binary:"
           file c_ipasir/solver
           ./c_ipasir/solver --help || true
+
+      - name: Upload solver binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: solver-${{ matrix.name }}
+          path: c_ipasir/solver
