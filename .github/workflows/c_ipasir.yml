@@ -36,7 +36,7 @@ jobs:
         run: |
           echo "solver binary:"
           file c_ipasir/solver
-          ./c_ipasir/solver --help || true
+          ./c_ipasir/solver 2>&1 || true
 
       - name: Upload solver binary
         uses: actions/upload-artifact@v4
